@@ -1,0 +1,23 @@
+<div id="login-container">
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
+
+    <label>
+      <%= f.text_field :username %>
+      <div class="label-text">username</div>
+    </label>
+
+    <label>
+      <%= f.password_field :password %>
+      <div class="label-text">password</div>
+    </label>
+
+    <div class="actions">
+      <button>Submit</button>
+    </div>
+  <% end %>
+
+  <div class="white-links">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

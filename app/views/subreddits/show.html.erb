@@ -1,0 +1,6 @@
+<% @posts.each do |post| %>
+  <%= link_to post.title, post_path(post) %>
+<% end %>
+
+<%= button_to "Unsubscribe", unsubscribe_path, { :method => "get" } if @subscribed %>
+<%= button_to "Subscribe", subscribe_path, { :method => "get" }  unless @subscribed %>

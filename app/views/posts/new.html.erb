@@ -1,0 +1,15 @@
+<%= form_with model: @post do |form| %>
+  <div>
+    <%= form.label :subreddit, "Subreddit", :class => "label" %>
+    <%= form.collection_select(:subreddit, @subreddits, :id, :title) %>
+  </div>
+  <%= form.text_area :body, size: '60x10' %>
+  <%= form.text_field :title %>
+  <%= form.submit %>
+<% end %>
+
+<script>
+    $(document).ready(function() {
+        $('#post_subreddit').select2();
+    });
+</script>

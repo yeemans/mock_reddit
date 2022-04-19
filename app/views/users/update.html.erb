@@ -1,0 +1,4 @@
+
+<%= image_tag url_for(current_user.avatar) if current_user.avatar.persisted? %>
+<%= image_tag url_for(current_user.banner) if current_user.banner.persisted? %>
+

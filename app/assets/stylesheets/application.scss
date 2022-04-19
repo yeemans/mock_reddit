@@ -1,0 +1,245 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+ body { 
+   margin: 0;
+ }
+
+nav {
+    height: 10%;
+    width: 100%;
+    font-family: "Helvetica Neue", Lato;
+    background: #333333; 
+    margin-top: 0px;
+}
+
+nav a { 
+  color: #EEEEEE;
+  font-size: 1.25em;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #links {
+  display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 2%;
+  color: white;
+}
+
+.burger { 
+
+    width: 35px;
+    height: 4px;
+    background-color: white;
+    margin: 10% 0;
+  
+}
+
+
+/* Style the active link (or home/logo) */
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+#login-container { 
+    width: 80%; 
+    height: 100%; 
+    margin: auto;
+}
+
+.sign_in_field:focus { 
+    border-color: lightblue; 
+    border-width: 2px; 
+    border-style: solid;
+}
+
+#profile_area { 
+    float: right;
+    width: 15%;
+}
+
+#nav_pic { 
+    height: 24px; 
+    width: 24px;
+    float: left;
+}
+
+
+
+#profile_pic { 
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 3%;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#add_image { 
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    height: 32px; 
+    width: 32px;
+    background: white; 
+    border-width: 1px; 
+    border-radius: 5%; 
+    border-style: solid;
+}
+
+#right_bar  { 
+    margin-left: 60%;
+    width: 30%; 
+    height: 50%;
+}
+
+#blue_header {
+    background: #5f99cf; 
+    position: relative;
+    height: 64px;
+}
+
+
+body {
+  font-family: "Open Sans", Helvetica;
+}
+
+
+body {
+  background-color: #333333;
+  /* font-family: "Open Sans", Helvetica; */
+}
+
+
+
+label {
+  display: block;
+  letter-spacing: 4px;
+  padding-top: 30px;
+  color: #EEE
+
+}
+
+label .label-text {
+  color: #9B9B9B;
+  cursor: text;
+  font-size: 20px;
+  line-height: 20px;
+  text-transform: uppercase;
+  -moz-transform: translateY(-34px);
+  -ms-transform: translateY(-34px);
+  -webkit-transform: translateY(-34px);
+  transform: translateY(-34px);
+  transition: all 0.3s;
+}
+label input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid #4A4A4A;
+  color: white;
+  font-size: 36px;
+  letter-spacing: -1px;
+  outline: 0;
+  padding: 5px 20px;
+  text-align: center;
+  transition: all 0.3s;
+  width: 200px;
+}
+label input:focus {
+  max-width: 100%;
+  width: 400px;
+}
+label input:focus + .label-text {
+  color: #F0F0F0;
+  font-size: 13px;
+  -moz-transform: translateY(-74px);
+  -ms-transform: translateY(-74px);
+  -webkit-transform: translateY(-74px);
+  transform: translateY(-74px);
+}
+label input:valid + .label-text {
+  font-size: 13px;
+  -moz-transform: translateY(-74px);
+  -ms-transform: translateY(-74px);
+  -webkit-transform: translateY(-74px);
+  transform: translateY(-74px);
+}
+
+button {
+  background-color: #333333;
+  border: 2px solid white;
+  border-radius: 27px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  transition: all 200ms;
+}
+
+button:hover, button:focus {
+  background-color: white;
+  color: #333333;
+  outline: 0;
+}
+
+

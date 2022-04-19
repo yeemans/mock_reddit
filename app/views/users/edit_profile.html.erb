@@ -1,0 +1,6 @@
+<%= @user.inspect %>
+<%= form_with model: @user do |f| %>
+  <%= f.label "Profile Photo" %>
+  <%= f.file_field :avatar %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,3 @@
+<%= form_with(model: @user, :html => { :id => "banner_upload_form", :class => 'hidden'}) do |f| %>
+    <%= f.file_field :banner, :id => 'banner_file' %>
+<% end %>

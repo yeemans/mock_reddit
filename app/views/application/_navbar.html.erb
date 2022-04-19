@@ -1,0 +1,14 @@
+   <nav class="topnav">
+      <%= link_to "Profile", profile_path(current_user.username), class: 'active' %>
+
+      <div id="links">
+        <%= link_to "Post", new_post_path %>
+        <%= link_to "New Sub", new_subreddit_path %>
+        <%= link_to "Home", root_path %>
+      </div>
+        
+      <a href="javascript:void(0);" class="icon" onclick="showNav()">
+        <i class="fa fa-bars"></i>
+      </a>
+
+    </nav>
