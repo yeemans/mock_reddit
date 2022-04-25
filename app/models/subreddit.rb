@@ -1,4 +1,7 @@
 class Subreddit < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: :title
+
   has_many :subscriptions
   has_many :subscribers, :through => :subscriptions, source: :user
   has_many :posts

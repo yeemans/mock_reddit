@@ -29,4 +29,8 @@ class SubredditsController < ApplicationController
     Subscription.where(user: current_user, subreddit: @subreddit.id).first.destroy
   end
 
+  def search 
+
+  end
+
 end

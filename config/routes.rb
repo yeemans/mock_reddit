@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/edit_profile', to: 'users#edit_profile', :as => :profile_edit
   post '/u/:name', to: 'users#update', :as => :update
 
+  post '/search', to: 'subreddits#search', :as => :search
+
   
 
 
