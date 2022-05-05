@@ -13,10 +13,14 @@ class PostsController < ApplicationController
   end
 
   def post_params 
-    params.require(:post).permit(:subreddit_id, :body, :title)
+    params.require(:post).permit(:subreddit_id, :body, :title, :image)
   end
 
   def show 
     @post = Post.find(params[:id])
+    @subreddit = Subreddit.find(@post.subreddit_id)
+    @banner = 'default_banner'
+    @banner = @subreddit.banner_link if @subreddit.banner_link != ""
+
   end
 end

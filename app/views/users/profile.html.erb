@@ -1,37 +1,15 @@
-<div id="right_bar">
-  <div id = "blue_header" style="background-image: url('<%= @profile_banner %>') ">
-    <%= image_tag "add_image.png", { :id => "add_image" } if @is_profile_owner %>
+
+  <div id = "header" style="background-image: url('<%= @profile_banner %>') "> </div>
     <%= image_tag @avatar, { :id => "profile_pic" } %> 
 
     <%= render "update_profile_picture" if @is_profile_owner %>
     <%= render "update_banner" if @is_profile_owner %>
 
-  </div>
-</div>
 
 <div id="left-bar">
   <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>  
 </div>
-<script> 
-  document.getElementById('add_image').addEventListener('click', clickBannerForm);
-  document.getElementById('banner_file').addEventListener('change', submitBannerForm);
 
-  document.getElementById('profile_pic').addEventListener('click', clickAvatarForm); 
-  document.getElementById('avatar_file').addEventListener('change', submitAvatarForm);
+<%= javascript_pack_tag 'profile', 'data-turbolinks-track' => false %>
 
-  function clickBannerForm() { 
-    document.getElementById('banner_file').click();
-  }
 
-  function submitBannerForm() {
-    document.getElementById('banner_upload_form').submit();
-  }
-
-  function clickAvatarForm() {
-    document.getElementById('avatar_file').click();
-  }
-
-  function submitAvatarForm() { 
-    document.getElementById('avatar_upload_form').submit();
-  }
-</script>

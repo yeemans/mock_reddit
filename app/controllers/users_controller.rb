@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 
   end
 
+  def show 
+
+  end
+
   def profile 
     @profile_owner = User.find_by(username: params[:name])
 

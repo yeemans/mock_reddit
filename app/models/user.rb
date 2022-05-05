@@ -16,6 +16,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_one_attached :banner 
+
+  include PgSearch::Model
+  multisearchable against: :username
   
   def email_required?
     false

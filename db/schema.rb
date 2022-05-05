@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_25_022120) do
+ActiveRecord::Schema.define(version: 2022_04_30_181532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2022_04_25_022120) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "data_fingerprint"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -86,6 +97,7 @@ ActiveRecord::Schema.define(version: 2022_04_25_022120) do
     t.string "banner_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
   end
 
   create_table "subscriptions", force: :cascade do |t|

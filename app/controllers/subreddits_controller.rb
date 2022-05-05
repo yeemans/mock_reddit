@@ -5,6 +5,8 @@ class SubredditsController < ApplicationController
 
   def create 
     @subreddit = Subreddit.create(subreddit_params)
+    @moderation = SubredditModeration.create({:moderator_id => current_user.id, 
+    :moderated_subreddit_id => @subreddit.id})
   end 
 
   def subreddit_params
@@ -15,6 +17,8 @@ class SubredditsController < ApplicationController
     @subreddit = Subreddit.find_by(title: params[:title])
     @posts = @subreddit.posts
     @subscribed = current_user.subreddits.include?(@subreddit)
+    @banner = 'default_banner'
+    @banner = @subreddit.banner_link if @subreddit.banner_link != ""
   end
 
   def subscribe 
@@ -30,7 +34,7 @@ class SubredditsController < ApplicationController
   end
 
   def search 
-
+    
   end
 
 end

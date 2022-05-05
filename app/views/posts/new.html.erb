@@ -3,10 +3,11 @@
     <%= form.label :subreddit, "Subreddit", :class => "label" %>
     <%= form.collection_select(:subreddit, @subreddits, :id, :title) %>
   </div>
-  <%= form.text_area :body, size: '60x10' %>
-  <%= form.text_field :title %>
+  <%= form.text_field :title, :placeholder => "Title", :class => "full_width" %>
+  <%= form.cktext_area :body, size: '60x10' %>
   <%= form.submit %>
 <% end %>
+
 
 <script>
     $(document).ready(function() {

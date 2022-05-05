@@ -1,1 +1,10 @@
-<%= @post.inspect %>
+<%= image_tag @banner, :id => "subreddit_banner" %>
+
+<div class="columns">
+  <div class="column is-half">
+    <div class="post-header">
+      <p> Posted by <%= @post.user.username %> </p>
+    </div>
+  </div>
+</div>
+<%= @post.body.html_safe %>

@@ -1,6 +1,30 @@
-<% @posts.each do |post| %>
-  <%= link_to post.title, post_path(post) %>
-<% end %>
+<%= image_tag @banner, :id => "subreddit_banner" %>
+<div id="subreddit-pages">
+  <h2 id="subreddit-title"> <%= @subreddit.title %> </h2>
 
-<%= button_to "Unsubscribe", unsubscribe_path, { :method => "get" } if @subscribed %>
-<%= button_to "Subscribe", subscribe_path, { :method => "get" }  unless @subscribed %>
+  <%= button_to "Join", unsubscribe_path, :id => "join_button" if @subscribed %>
+  <%= button_to "Unjoin", subscribe_path, :id => "join_button" unless @subscribed %>
+</div>
+
+<div class="columns is-multiline" id="subreddit-body">
+  <div class="column is-half">
+    <% @posts.each do |post| %>
+        <div class="post-header">
+          <p> Posted by <%= post.user.username %> </p>
+          <%= link_to post.title, post_path(post.id) %> 
+        </div>
+
+    <% end %>
+  </div>
+
+  <div class="column is-one-quarter">
+    <div class="description-header">
+      <h1> About Community </h1>
+    </div>
+
+    <div class="description-body">
+      <p> <%= @subreddit.description%> </p>
+    </div>
+  </div>
+
+</div>

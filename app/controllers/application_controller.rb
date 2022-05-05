@@ -17,5 +17,8 @@ class ApplicationController < ActionController::Base
       @signed_in = current_user 
       @has_avatar = current_user.avatar.persisted? if @signed_in
       @avatar = url_for(current_user.avatar) if @signed_in && @has_avatar 
+
+
+      
     end
 end

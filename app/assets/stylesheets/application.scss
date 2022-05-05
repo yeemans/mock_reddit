@@ -20,7 +20,7 @@
  }
 
 nav {
-    height: 10%;
+    height: 15%;
     width: 100%;
     font-family: "Helvetica Neue", Lato;
     background: #333333; 
@@ -43,6 +43,17 @@ nav a {
   display: none;
 }
 
+/* Style the active link (or home/logo) */
+.active {
+  background-color: #04AA6D;
+  color: white;
+  position: relative;
+}
+
+#profile, #search_form { 
+  display: inline;
+}
+
 /* Style navigation menu links */
 .topnav a {
   color: white;
@@ -52,10 +63,19 @@ nav a {
   display: block;
 }
 
-/* Style the hamburger menu */
+
+/* Style the hamburger menu vertical center*/
+
+i { 
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .topnav a.icon {
   display: block;
-  height: 100%;
   position: absolute;
   right: 0;
   top: 0;
@@ -63,20 +83,8 @@ nav a {
   color: white;
 }
 
-.burger { 
-
-    width: 35px;
-    height: 4px;
-    background-color: white;
-    margin: 10% 0;
-  
-}
-
-
-/* Style the active link (or home/logo) */
-.active {
-  background-color: #04AA6D;
-  color: white;
+i:hover { 
+  color: blue;
 }
 
 /* Links inside the navbar */
@@ -107,10 +115,7 @@ nav a {
     border-style: solid;
 }
 
-#profile_area { 
-    float: right;
-    width: 15%;
-}
+
 
 #nav_pic { 
     height: 24px; 
@@ -126,23 +131,13 @@ nav a {
     height: 80px;
     border-radius: 3%;
     margin-left: 5%;
-    margin-top: 10%;
+    margin-top: -40px; /* vertical center with header */
+    position: relative; 
+    cursor: pointer;
 }
 
 .hidden {
     visibility: hidden;
-}
-
-#add_image { 
-    position: absolute;
-    bottom: 0;
-    right: 5%;
-    height: 32px; 
-    width: 32px;
-    background: white; 
-    border-width: 1px; 
-    border-radius: 5%; 
-    border-style: solid;
 }
 
 #right_bar  { 
@@ -151,10 +146,11 @@ nav a {
     height: 50%;
 }
 
-#blue_header {
-    background: #5f99cf; 
-    position: relative;
-    height: 64px;
+#header {
+  position: relative;
+  height: 100px;
+  background: #1DA1F2;
+  cursor: pointer;
 }
 
 
@@ -163,18 +159,11 @@ body {
 }
 
 
-body {
-  background-color: #333333;
-  /* font-family: "Open Sans", Helvetica; */
-}
-
-
 
 label {
   display: block;
   letter-spacing: 4px;
   padding-top: 30px;
-  color: #EEE
 
 }
 
@@ -194,7 +183,7 @@ label input {
   background-color: transparent;
   border: 0;
   border-bottom: 2px solid #4A4A4A;
-  color: white;
+  color: #333;
   font-size: 36px;
   letter-spacing: -1px;
   outline: 0;
@@ -208,7 +197,7 @@ label input:focus {
   width: 400px;
 }
 label input:focus + .label-text {
-  color: #F0F0F0;
+  color: #333;
   font-size: 13px;
   -moz-transform: translateY(-74px);
   -ms-transform: translateY(-74px);
@@ -242,4 +231,42 @@ button:hover, button:focus {
   outline: 0;
 }
 
+.full_width { 
+  width: 100%;
+}
 
+#subreddit_banner { 
+  width: 100%; 
+  height: 192px;
+}
+
+.post-body * { 
+  max-height: 400px; 
+  max-width: 400px;
+}
+
+#subreddit-pages { 
+  height: 20%; 
+  background:white;
+}
+
+#subreddit-pages * { 
+  display: inline;
+}
+
+#subreddit-body { 
+  justify-content: center;
+}
+
+#subreddit-title { 
+  margin-left: 25%; 
+  font-family: Lato;
+  font-size: 1.5em;
+}
+
+#join_button { 
+  color: white;
+  background: #004880;
+  font-size: 1.25em;
+  border-radius: 10%;
+}

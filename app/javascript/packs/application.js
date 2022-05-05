@@ -8,6 +8,14 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+let query = document.getElementById("query"); 
+
+query.addEventListener("keyup", function(event) {
+    if (event.code == 'Enter') {
+      document.getElementById("searchForm").submit();
+    }
+  }); 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
