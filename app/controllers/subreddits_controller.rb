@@ -17,7 +17,7 @@ class SubredditsController < ApplicationController
     @subreddit = Subreddit.find_by(title: params[:title])
     @posts = @subreddit.posts
     @subscribed = current_user.subreddits.include?(@subreddit)
-    @banner = 'default_banner'
+    @banner = 'default_banner.png'
     @banner = @subreddit.banner_link if @subreddit.banner_link != ""
   end
 
