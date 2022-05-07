@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def show 
     @post = Post.find(params[:id])
     @subreddit = Subreddit.find(@post.subreddit_id)
-    @banner = 'default_banner'
+    @banner = 'default_banner.png'
     @banner = @subreddit.banner_link if @subreddit.banner_link != ""
 
   end
