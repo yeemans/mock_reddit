@@ -8,6 +8,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import "trix"
+import "@rails/actiontext"
+
 let query = document.getElementById("query"); 
 
 query.addEventListener("keyup", function(event) {
@@ -20,3 +23,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+require("trix")
+require("@rails/actiontext")

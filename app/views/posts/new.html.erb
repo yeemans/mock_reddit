@@ -4,7 +4,8 @@
     <%= form.collection_select(:subreddit, @subreddits, :id, :title) %>
   </div>
   <%= form.text_field :title, :placeholder => "Title", :class => "full_width" %>
-  <%= form.cktext_area :body, size: '60x10' %>
+  <%= form.rich_text_area :content, size: '60x10' %>
+
   <%= form.submit %>
 <% end %>
 

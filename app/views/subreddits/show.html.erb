@@ -7,11 +7,16 @@
 </div>
 
 <div class="columns is-multiline" id="subreddit-body">
-  <div class="column is-half">
+  <div class="column is-three-fifths">
     <% @posts.each do |post| %>
         <div class="post-header">
-          <p> Posted by <%= post.user.username %> </p>
-          <%= link_to post.title, post_path(post.id) %> 
+          <%= link_to "Posted by #{post.user.username}", profile_path(post.user.username),
+          :class => "post-username" %>
+          <%= link_to post.title, post_path(post.id), :class => "post-link" %> 
+
+          <div class="post-body">
+            <%= post.content %>
+          </div>
         </div>
 
     <% end %>

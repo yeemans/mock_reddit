@@ -19,6 +19,18 @@
    margin: 0;
  }
 
+ .columns { 
+   display: flex;
+ }
+
+ .is-three-fifths { 
+   width: 60%;
+ }
+
+ .is-one-quarter { 
+   width: 25%;
+ }
+
 nav {
     height: 15%;
     width: 100%;
@@ -269,4 +281,22 @@ button:hover, button:focus {
   background: #004880;
   font-size: 1.25em;
   border-radius: 10%;
+}
+
+.post-header { 
+  margin-bottom: 2%;
+}
+
+.post-username { 
+  color: gray; 
+  font-size: 0.75em;
+  display: block;
+}
+
+.post-link { 
+  color: black;
+}
+
+.description-header, .description-body, .post-header { 
+  background: white;
 }
