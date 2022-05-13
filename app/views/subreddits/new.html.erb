@@ -1,7 +1,6 @@
 <%= form_with model: @subreddit do |form| %>
   <%= form.label :title, "Title: " %>
   <%= form.text_field :title %>
-  <%= form.label :banner_link, "Banner Link: " %>
-  <%= form.text_field :banner_link %>
+  <%= form.file_field :banner %>
   <%= form.submit %>
 <% end %>

@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :authentication_keys => [:username]
          
   validates :username, uniqueness: true
+  
+  include PgSearch::Model
+  multisearchable against: :username
 
   has_many :posts
 

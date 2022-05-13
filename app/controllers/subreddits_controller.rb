@@ -10,7 +10,7 @@ class SubredditsController < ApplicationController
   end 
 
   def subreddit_params
-    params.require(:subreddit).permit(:title, :banner_link)
+    params.require(:subreddit).permit(:title, :banner)
   end
 
   def show 
@@ -18,7 +18,8 @@ class SubredditsController < ApplicationController
     @posts = @subreddit.posts
     @subscribed = current_user.subreddits.include?(@subreddit)
     @banner = 'default_banner.png'
-    @banner = @subreddit.banner_link if @subreddit.banner_link != ""
+    @banner = url_for(@subreddit.banner) if @subreddit.banner.persisted?
+    @moderators = @subreddit.moderators
   end
 
   def subscribe 
@@ -34,7 +35,21 @@ class SubredditsController < ApplicationController
   end
 
   def search 
-    
+    @results = PgSearch.multisearch(params[:query])
+
+    @subreddit_results = @results.select { |r| r.searchable_type == "Subreddit" }
+    @post_results = @results.select { |r| r.searchable_type == "Post" }
+    @user_results = @results.select { |r| r.searchable_type == "User" }
+
+    @subreddits = PostsHelper.objects_from_results(@subreddit_results)
+    @posts = PostsHelper.objects_from_results(@post_results)
+    @users = PostsHelper.objects_from_results(@user_results)
   end
 
+  def update 
+    @subreddit = Subreddit.find_by(:title => params[:title])
+    @subreddit.banner.attach(params[:subreddit][:banner]) 
+    @subreddit.save!
+    redirect_to r_path(@subreddit.title)
+  end
 end

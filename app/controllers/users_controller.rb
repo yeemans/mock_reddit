@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
+  def index 
+
+  end 
+  
   def feed
-
+    redirect_to new_user_session_path unless current_user 
   end
 
   def show 
@@ -27,7 +32,7 @@ class UsersController < ApplicationController
   def update 
     current_user.avatar.attach(params[:avatar]) if params[:avatar]
     current_user.banner.attach(params[:banner]) if params[:banner]
-    redirect_to profile_path({ :name => current_user.username })
+    #redirect_to profile_path({ :name => current_user.username })
   end 
 
 end

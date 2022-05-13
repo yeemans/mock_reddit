@@ -17,7 +17,7 @@ query.addEventListener("keyup", function(event) {
     if (event.code == 'Enter') {
       document.getElementById("searchForm").submit();
     }
-  }); 
+}); 
 
 Rails.start()
 Turbolinks.start()

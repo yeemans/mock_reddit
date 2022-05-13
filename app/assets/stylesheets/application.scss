@@ -253,8 +253,8 @@ button:hover, button:focus {
 }
 
 .post-body * { 
-  max-height: 400px; 
-  max-width: 400px;
+  max-height: 40vh; 
+  max-width: 40vh;
 }
 
 #subreddit-pages { 
@@ -293,10 +293,54 @@ button:hover, button:focus {
   display: block;
 }
 
-.post-link { 
+.post-link, .post-body * { 
   color: black;
 }
 
-.description-header, .description-body, .post-header { 
+.post-body { 
+  margin-top: 2%;
+}
+
+.post-link { 
+  font-size: 1.25em;
+}
+
+.description-body, .post-header { 
   background: white;
+}
+
+figure img { 
+  display: block;
+}
+
+#description-header, #moderator-header { 
+  background: #2f6ba3;
+  height: 3em;
+  position: relative;
+}
+
+#moderator-header { 
+  margin-bottom: 5%;
+}
+
+#about-community, #moderator-header h3 { 
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+#subreddit-description { 
+  margin-top: 5%;
+}
+
+#moderator-header { 
+  background: #2f6ba3;
+  position: relative;
+}
+
+#post-list, #user-list { 
+  display: none;
 }

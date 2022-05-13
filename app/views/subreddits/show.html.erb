@@ -1,9 +1,11 @@
 <%= image_tag @banner, :id => "subreddit_banner" %>
+<%= render "update_banner" if @subreddit.moderators.include?(current_user) %>
+
 <div id="subreddit-pages">
   <h2 id="subreddit-title"> <%= @subreddit.title %> </h2>
 
-  <%= button_to "Join", unsubscribe_path, :id => "join_button" if @subscribed %>
-  <%= button_to "Unjoin", subscribe_path, :id => "join_button" unless @subscribed %>
+  <%= button_to "Unjoin", unsubscribe_path, :id => "join_button" if @subscribed %>
+  <%= button_to "Join", subscribe_path, :id => "join_button" unless @subscribed %>
 </div>
 
 <div class="columns is-multiline" id="subreddit-body">
@@ -15,7 +17,7 @@
           <%= link_to post.title, post_path(post.id), :class => "post-link" %> 
 
           <div class="post-body">
-            <%= post.content %>
+            <%= link_to post.content, post_path(post.id) %>
           </div>
         </div>
 
@@ -23,13 +25,29 @@
   </div>
 
   <div class="column is-one-quarter">
-    <div class="description-header">
-      <h1> About Community </h1>
+
+    <div id="description-header">
+      <h3 id="about-community"> About Community </h3>
     </div>
 
     <div class="description-body">
-      <p> <%= @subreddit.description%> </p>
+      <p id="subreddit-description"> <%= @subreddit.description %> </p>
+      <p> <%= number_to_human(@subreddit.subscribers.count) %> </p>
+      <p> Members </p>
     </div>
+
+    <div id="moderator-header">
+      <h3> Moderators </h3>
+    </div>
+
+    <% @moderators.each do |mod| %>
+      <%= link_to "u/#{mod.username}", profile_path(mod.username) %>
+    <% end %>
+
   </div>
 
 </div>
+
+<% if @subreddit.moderators.include?(current_user) %>
+  <%= javascript_pack_tag 'banner.js' %>
+<% end %>

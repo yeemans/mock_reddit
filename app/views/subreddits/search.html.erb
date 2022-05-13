@@ -1,3 +1,33 @@
-<%= PgSearch.multisearch(params[:query]).each do |result| %>
-  <%= link_to result %>
-<% end %>
+<div id="categories">
+  <button id="subreddit-category">Subreddits</button>
+  <button id="post-category">Posts</button>
+  <button id="user-category">Users</button>
+</div>
+
+<div id="subreddit-list">
+  <% @subreddits.each do |subreddit| %>
+
+    <div class="subreddit-listing" >
+
+      <%= link_to "r/#{subreddit.title}", r_path(subreddit.title) %>
+      <p> <%= subreddit.subscribers.count %> Members </p>
+      <p> <%= subreddit.description %> </p>
+    </div>
+  <% end %>
+</div>
+
+<div id="post-list">
+  <% @posts.each do |post| %>
+    <%= link_to post.title, post_path(post.id) %>
+  <% end %>
+</div>
+
+<div id="user-list">
+  <% @users.each do |user| %>
+    <%= link_to user.username, profile_path(user.username) %>
+  <% end %>
+</div>
+
+<%= javascript_pack_tag 'search.js' %>
+
+

@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
+  
   devise_for :users, controllers: { sessions: "users/sessions" }
-  resources :users
+  resources :users, only: [:delete]
   resources :subreddits, only: [:new, :create]
   resources :posts, only: [:new, :create, :show]
 
   root to: "users#feed"
-  get '/r/:title', to: 'subreddits#show'
+
+  get '/r/:title', to: 'subreddits#show', :as => :r
   post '/r/:title/subscribe', to: 'subreddits#subscribe', :as => :subscribe
   post '/r/:title/unsubscribe', to: 'subreddits#unsubscribe', :as => :unsubscribe
+  post '/r/:title', to: 'subreddits#update', :as => :subreddit_update
 
   get '/feed', to: 'users#feed', :as => :feed
   get '/u/:name', to: 'users#profile', :as => :profile

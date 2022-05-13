@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :authenticate_user!
   def new 
     @post = Post.new
     @subreddits = Subreddit.all
@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def create  
     @post = current_user.posts.build(post_params) # bind post to user
     @post.subreddit_id = params[:post][:subreddit] # bind post to subreddit 
+    @post.body = params[:post][:content]
     @post.save!
     flash[:post_success] = "Post created!" 
   end

@@ -1,0 +1,5 @@
+<%= form_with(model: @subreddit, :url => subreddit_update_path(@subreddit.title), 
+:html => { :id => "banner_form", :class => 'hidden', :method => :post}) do |f| %>
+      
+    <%= f.file_field :banner, :id => 'banner_file' %>
+<% end %>
