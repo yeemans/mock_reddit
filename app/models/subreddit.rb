@@ -10,4 +10,5 @@ class Subreddit < ApplicationRecord
 
   has_many :subreddit_moderations, foreign_key: :moderated_subreddit
   has_many :moderators, through: :subreddit_moderations, source: :moderator
+
 end

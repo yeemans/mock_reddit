@@ -44,6 +44,8 @@ class SubredditsController < ApplicationController
     @subreddits = PostsHelper.objects_from_results(@subreddit_results)
     @posts = PostsHelper.objects_from_results(@post_results)
     @users = PostsHelper.objects_from_results(@user_results)
+
+    ActiveStorage::Current.host = "http://localhost:3000" 
   end
 
   def update 

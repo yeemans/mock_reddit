@@ -12,7 +12,7 @@
   <div class="column is-three-fifths">
     <% @posts.each do |post| %>
         <div class="post-header">
-          <%= link_to "Posted by #{post.user.username}", profile_path(post.user.username),
+          <%= link_to "Posted by u/#{post.user.username}", profile_path(post.user.username),
           :class => "post-username" %>
           <%= link_to post.title, post_path(post.id), :class => "post-link" %> 
 

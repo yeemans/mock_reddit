@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post '/u/:name', to: 'users#update', :as => :update
 
   post '/search', to: 'subreddits#search', :as => :search
-
+  get '/search', to: 'subreddits#search'
   
 
 

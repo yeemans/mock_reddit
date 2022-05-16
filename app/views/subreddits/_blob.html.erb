@@ -1,3 +1,4 @@
+<% blob = ActiveStorage::Blob.find(blob) %>
 <figure class="attachment attachment--<%= blob.representable? ? "preview" : "file" %> attachment--<%= blob.filename.extension %>">
   <% if blob.video? %>
     <video

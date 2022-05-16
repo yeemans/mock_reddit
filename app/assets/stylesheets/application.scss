@@ -62,7 +62,7 @@ nav a {
   position: relative;
 }
 
-#profile, #search_form { 
+#profile, #search_form, .inline-text { 
   display: inline;
 }
 
@@ -343,4 +343,15 @@ figure img {
 
 #post-list, #user-list { 
   display: none;
+}
+
+.circular_sub_icon { 
+  height: 5vh; 
+  width: 5vh; 
+  border-radius: 50%;
+}
+
+figure { 
+  max-height: 25vh; 
+  max-width: 25vh;
 }
