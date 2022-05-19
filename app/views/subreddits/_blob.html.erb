@@ -1,10 +1,8 @@
 <% blob = ActiveStorage::Blob.find(blob) %>
+
 <figure class="attachment attachment--<%= blob.representable? ? "preview" : "file" %> attachment--<%= blob.filename.extension %>">
   <% if blob.video? %>
-    <video
-      controls="false"
-      width="100%"
-    >
+    <video controls>
       <source src= <%= rails_blob_url(blob) %>, type=<%= blob.content_type %> >
     </video>
   <% elsif blob.audio? %>
@@ -21,14 +19,5 @@
     <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 800, 600 ] : [ 1024, 768 ]) %>
   <% end %>
 
-  <figcaption class="attachment__caption">
-    <% if caption = blob.try(:caption) %>
-      <%= caption %>
-    <% else %>
-      <span class="attachment__name"><%= blob.filename %></span>
-      <span class="attachment__size"><%= number_to_human_size blob.byte_size %></span>
-    <% end %>
-    <span> · </span>
-    <%= link_to "Download", rails_blob_path(blob, disposition: "attachment") %>
-  </figcaption>
+
 </figure>

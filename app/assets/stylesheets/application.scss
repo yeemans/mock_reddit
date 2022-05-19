@@ -19,6 +19,8 @@
    margin: 0;
  }
 
+ 
+
  .columns { 
    display: flex;
  }
@@ -305,7 +307,7 @@ button:hover, button:focus {
   font-size: 1.25em;
 }
 
-.description-body, .post-header { 
+.description-body, .post-header, .post-content { 
   background: white;
 }
 
@@ -355,3 +357,45 @@ figure {
   max-height: 25vh; 
   max-width: 25vh;
 }
+
+#post-list { 
+  width: 60%; 
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.post-header { 
+  margin-bottom: 0px;
+}
+
+.post-header a { 
+  color: #4A4A4A;
+}
+
+.post_title { 
+  font-family: Arial, Lato; 
+  font-size: 1.25em; 
+  color: black;
+  text-decoration: none;
+  margin-left: 5vh;
+}
+
+#subreddit-list, #post-list, #user-list { 
+  margin-top: 5vh;
+}
+
+.post-content { 
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+ 
+.post-content * { 
+  margin-bottom: 10vh;
+}
+
+.post-content img, .post-content figure video { 
+  width: 100%;
+  object-fit: cover;
+}
+
