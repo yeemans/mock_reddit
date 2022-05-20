@@ -1,18 +1,23 @@
 <div id = "header" style="background-image: url('<%= @profile_banner %>') "> </div>
-    <%= image_tag @avatar, { :id => "profile_pic" } %> 
+<%= render "update_banner" if @is_profile_owner %>
 
-    <%= render "update_profile_picture" if @is_profile_owner %>
-    <%= render "update_banner" if @is_profile_owner %>
-
-<div class="columns" style="justify-content: space-between;">
+<div class="columns profile-container">
   <div>
+    <%= image_tag @avatar, { :id => "profile_pic" } %> 
+    <%= render "update_profile_picture" if @is_profile_owner %>
     <%= button_to "Log out", destroy_user_session_path, :method => :delete %>
   </div>
 
   <div class="column is-one-quarter">
+
     <div id="bio-header">
       <h3 id="about-me"> About Me </h3>
     </div>
+
+    <div class="bio-body">
+      <p id="bio-text"> <%= @profile_owner.bio %> </p>
+    </div>
+
   </div>
 </div>
 

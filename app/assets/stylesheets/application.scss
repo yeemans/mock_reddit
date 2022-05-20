@@ -141,9 +141,7 @@ i:hover {
     object-fit: cover;
     width: 80px;
     height: 80px;
-    border-radius: 3%;
-    margin-left: 5%;
-    margin-top: -40px; /* vertical center with header */
+    border-radius: 5%;
     position: relative; 
     cursor: pointer;
 }
@@ -332,8 +330,9 @@ figure img {
   transform: translateY(-50%);
 }
 
-#subreddit-description { 
+#subreddit-description, #bio-text { 
   margin-top: 5%;
+  font-family: Lato;
 }
 
 #moderator-header { 
@@ -405,4 +404,10 @@ figure {
 
 .black { 
   color: black;
+}
+
+.profile-container { 
+  justify-content: space-between; 
+  width: 80%; 
+  margin: auto;
 }
