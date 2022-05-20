@@ -1,0 +1,9 @@
+<% user = User.find(user_id) %>
+<% avatar = 'default.png' %>
+<% avatar = url_for(user.avatar) if user.avatar.persisted? %>
+
+<div class="is-three-fifths" style="margin: auto;">
+  <%= image_tag avatar, :class => "user_listing_pfp" %>
+  <%= link_to "u/#{user.username}", profile_path(user.username), :class => "black" %>
+  <p class="user-bio"> <%= user.bio %> </p>
+</div>

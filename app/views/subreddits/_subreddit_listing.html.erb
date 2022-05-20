@@ -1,0 +1,6 @@
+<% subreddit = Subreddit.find(subreddit_id) %>
+<div class="subreddit-listing" >
+  <%= link_to "r/#{subreddit.title}", r_path(subreddit.title) %>
+  <p> <%= subreddit.subscribers.count %> Members </p>
+  <p> <%= subreddit.description %> </p>
+</div>

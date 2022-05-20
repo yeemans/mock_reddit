@@ -4,9 +4,16 @@
     <%= render "update_profile_picture" if @is_profile_owner %>
     <%= render "update_banner" if @is_profile_owner %>
 
+<div class="columns" style="justify-content: space-between;">
+  <div>
+    <%= button_to "Log out", destroy_user_session_path, :method => :delete %>
+  </div>
 
-<div id="left-bar">
-  <%= button_to "Log out", destroy_user_session_path, :method => :delete %>
+  <div class="column is-one-quarter">
+    <div id="bio-header">
+      <h3 id="about-me"> About Me </h3>
+    </div>
+  </div>
 </div>
 
 <%= javascript_pack_tag 'profile', 'data-turbolinks-track' => false %>

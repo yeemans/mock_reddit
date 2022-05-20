@@ -8,13 +8,7 @@ gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'
 
-group :development, :test do
-  gem 'pg'
-end
-
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 gem 'pg_search'
 

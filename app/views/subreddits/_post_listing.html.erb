@@ -1,0 +1,19 @@
+<% post = Post.find(post_id) %>
+<div class="post-header">
+
+  <% subreddit = Subreddit.find(post.subreddit_id)%>
+  <% banner = "default_banner.png" %>
+  <% banner = subreddit.banner if subreddit.banner.persisted? %>
+
+  <%= image_tag url_for(banner), :class => "circular_sub_icon"  %>
+  <%= link_to "r/#{subreddit.title}", r_path(subreddit.title), :class => "inline-text" %>
+  <%= link_to "Posted by u/#{post.user.username}", profile_path(post.user.username), :class => "inline-text" %>
+    
+</div>
+
+<div class="post-content" >
+  <%= link_to post.title, post_path(post.id), :class => "post_title" %>
+  <% if post.content.embeds.first %>
+    <%= render :partial => "embed_representation", :locals => {:post_id => post.id} %>
+  <% end %>
+</div>

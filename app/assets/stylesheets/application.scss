@@ -19,8 +19,6 @@
    margin: 0;
  }
 
- 
-
  .columns { 
    display: flex;
  }
@@ -315,7 +313,7 @@ figure img {
   display: block;
 }
 
-#description-header, #moderator-header { 
+#description-header, #moderator-header, #bio-header { 
   background: #2f6ba3;
   height: 3em;
   position: relative;
@@ -325,7 +323,7 @@ figure img {
   margin-bottom: 5%;
 }
 
-#about-community, #moderator-header h3 { 
+#about-community, #moderator-header h3, #about-me { 
   color: white;
   margin: 0;
   position: absolute;
@@ -368,7 +366,7 @@ figure {
   margin-bottom: 0px;
 }
 
-.post-header a { 
+.post-header a, .user-bio { 
   color: #4A4A4A;
 }
 
@@ -399,3 +397,12 @@ figure {
   object-fit: cover;
 }
 
+.user_listing_pfp { 
+  height: 8vh; 
+  width: 8vh; 
+  border-radius: 50%;
+}
+
+.black { 
+  color: black;
+}
