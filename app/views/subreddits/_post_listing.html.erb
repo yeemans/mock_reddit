@@ -14,6 +14,8 @@
 <div class="post-content" >
   <%= link_to post.title, post_path(post.id), :class => "post_title" %>
   <% if post.content.embeds.first %>
-    <%= render :partial => "embed_representation", :locals => {:post_id => post.id} %>
+    <p>
+      <%= render :partial => "embed_representation", :locals => {:post_id => post.id} %>
+    </p>
   <% end %>
 </div>
