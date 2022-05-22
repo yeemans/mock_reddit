@@ -1,2 +1,2 @@
-<% blob = Post.find(post_id).content.embeds.first %>
+<% blob = Post.find(post_id).content.embeds.first.blob %>
 <%= render :partial => "blob", :locals => {:blob => blob.id} %>

@@ -11,6 +11,7 @@ gem 'rails', '~> 6.1.5'
 gem 'pg'
 
 gem 'pg_search'
+gem 'aws-sdk-s3'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
