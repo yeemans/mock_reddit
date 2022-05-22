@@ -10,18 +10,11 @@
 
 <div class="columns is-multiline" id="subreddit-body">
   <div class="column is-three-fifths">
+
     <% @posts.each do |post| %>
-        <div class="post-header">
-          <%= link_to "Posted by u/#{post.user.username}", profile_path(post.user.username),
-          :class => "post-username" %>
-          <%= link_to post.title, post_path(post.id), :class => "post-link" %> 
-
-          <div class="post-body">
-            <%= link_to post.content, post_path(post.id) %>
-          </div>
-        </div>
-
+      <%= render :partial => "show_post", :locals => {:post_id => post.id} %>
     <% end %>
+
   </div>
 
   <div class="column is-one-quarter">

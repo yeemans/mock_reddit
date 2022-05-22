@@ -1,0 +1,12 @@
+<% post = Post.find(post_id) %>
+<div class="post-header">
+
+  <%= link_to "Posted by u/#{post.user.username}", profile_path(post.user.username),
+  :class => "post-username" %>
+  <%= link_to post.title, post_path(post.id), :class => "post-link" %> 
+
+  <div class="post-body">
+    <%= link_to post.content, post_path(post.id) %>
+  </div>
+  
+</div>
