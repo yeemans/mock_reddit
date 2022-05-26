@@ -35,4 +35,12 @@ class UsersController < ApplicationController
     #redirect_to profile_path({ :name => current_user.username })
   end 
 
+  def edit_bio 
+    return unless User.find(current_user.id) == User.find(params[:user])
+    @user = current_user
+    @user.bio = params[:bio]
+    @user.save!
+    redirect_to profile_path(current_user.username)
+  end
+
 end

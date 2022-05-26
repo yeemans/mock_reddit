@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     @banner = @subreddit.banner if @subreddit.banner.persisted?
 
     @moderators = @subreddit.moderators
+    @comment = Comment.new
   end
 
 end

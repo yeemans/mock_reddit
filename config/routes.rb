@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:delete]
   resources :subreddits, only: [:new, :create]
   resources :posts, only: [:new, :create, :show]
+  resources :comments, only: [:new, :create, :show]
 
   root to: "users#feed"
 
@@ -19,7 +20,9 @@ Rails.application.routes.draw do
 
   post '/search', to: 'subreddits#search', :as => :search
   get '/search', to: 'subreddits#search'
-  
+
+
+  get '/:name/edit_bio', to: 'users#edit_bio', :as => :edit_bio  
 
 
   

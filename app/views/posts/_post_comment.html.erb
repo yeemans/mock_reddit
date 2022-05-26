@@ -1,0 +1,8 @@
+<div id="form_div">
+  <%= form_for @comment do |form| %>
+    <%= form.text_area :body %>
+    <%= form.hidden_field :post_id, :value => params[:id] %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.submit %>
+  <% end %>
+</div>

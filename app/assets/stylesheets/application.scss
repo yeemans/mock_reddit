@@ -21,6 +21,7 @@
 
  .columns { 
    display: flex;
+   width: 100%;
  }
 
  .is-three-fifths { 
@@ -29,6 +30,10 @@
 
  .is-one-quarter { 
    width: 25%;
+ }
+
+ .is-multiline { 
+   flex-wrap: wrap;
  }
 
 nav {
@@ -410,4 +415,9 @@ figure {
   justify-content: space-between; 
   width: 80%; 
   margin: auto;
+}
+
+.trix-content * { 
+  display: block;
+  margin-bottom: 5vh;
 }
