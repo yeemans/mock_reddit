@@ -51,7 +51,7 @@ nav a {
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background: #003366;
   position: relative;
 }
 
@@ -62,24 +62,42 @@ nav a {
 
 /* Style the active link (or home/logo) */
 .active {
-  background-color: #04AA6D;
+  background: #003366;
   color: white;
   position: relative;
+}
+
+.active a { 
+  display: inline;
 }
 
 #profile, #search_form, .inline-text { 
   display: inline;
 }
 
+#profile img {
+  height: 10vh; 
+  width: 10vh;
+}
 /* Style navigation menu links */
 .topnav a {
   color: white;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+}
+
+#links * {
   display: block;
 }
 
+#links { 
+  line-height: 10vh;
+}
+
+#post { 
+  margin-left: 84%;
+}
 
 /* Style the hamburger menu vertical center*/
 
@@ -91,13 +109,12 @@ i {
   transform: translateY(-50%);
 }
 
-.topnav a.icon {
+.icon {
   display: block;
   position: absolute;
-  right: 0;
-  top: 0;
-  margin-right: 2%;
-  color: white;
+  top: 50%;
+  left: 95%;
+  transform: translate(-50%,-50%);
 }
 
 i:hover { 
@@ -132,15 +149,11 @@ i:hover {
     border-style: solid;
 }
 
-
-
 #nav_pic { 
     height: 24px; 
     width: 24px;
     float: left;
 }
-
-
 
 #profile_pic { 
     object-fit: cover;
