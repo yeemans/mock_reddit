@@ -71,20 +71,35 @@ nav a {
   display: inline;
 }
 
-#profile, #search_form, .inline-text { 
+#profile, #search_form, .inline-text, #home { 
   display: inline;
 }
 
-#profile img {
+#home img {
   height: 10vh; 
   width: 10vh;
 }
+
+#profile img { 
+  height: 48px; 
+  width: 48px;
+  border-radius: 25%; 
+  display: inline;
+  margin-right: 1%;
+}
+
 /* Style navigation menu links */
-.topnav a {
+.topnav a, #profile p {
   color: white;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+}
+
+#query { 
+  margin: auto;
+  width: 50%;
+  border-radius: 10px;
 }
 
 #links * {
@@ -101,7 +116,7 @@ nav a {
 
 /* Style the hamburger menu vertical center*/
 
-i { 
+.fa-pencil { 
   margin: 0;
   position: absolute;
   top: 50%;

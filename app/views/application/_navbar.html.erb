@@ -1,19 +1,24 @@
+<% @avatar = "default.png" %>
+<% @avatar = current_user.avatar if current_user.avatar.persisted? %>
 <nav class="topnav">
   <div class="active">
-    <%= link_to image_tag("reddit.png"), profile_path(current_user.username), id: 'profile' %>
+    <%= link_to image_tag("reddit.png"),root_path, id: 'home' %>
     <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, new_post_path, id: 'post' %>
   </div>
-
-  <a href="javascript:void(0);" class="icon" onclick="showNav()">
-    <i class="fa fa-bars"></i>
-  </a>
   
   <div id="links">
     <%= form_with url: "/search", :id => 'search_form' do |form| %>
       <%= form.text_field :query, :id => "query" %>
     <% end %>
+    
+    <%= link_to image_tag(@avatar) + "<p style='display: inline;'>#{current_user.username}</p>".html_safe, 
+    profile_path(current_user.username), id: 'profile' %>
+
     <%= link_to "New Sub", new_subreddit_path %>
-    <%= link_to "Home", root_path %>
   </div>
+
+  <a href="javascript:void(0);" class="icon" onclick="showNav()">
+    <i class="fa fa-bars"></i>
+  </a>
     
 </nav>
