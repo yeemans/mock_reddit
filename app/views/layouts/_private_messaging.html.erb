@@ -1,0 +1,12 @@
+<div class="col-md-10 bg-dark text-light">
+  <% if @single_room %>
+    <%= turbo_stream_from @single_room %>
+    <h4 class="text-center"> <%= @receiver.username %> </h4>
+    <div id="messages">
+    <%= render @messages %>
+    </div>
+    <%= render partial: 'layouts/new_message_form' %>
+  <% end %>
+</div>
+
+

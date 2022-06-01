@@ -5,6 +5,7 @@
   <div>
     <%= image_tag @avatar, { :id => "profile_pic" } %> 
     <%= render "update_profile_picture" if @is_profile_owner %>
+    <%= link_to "Chat", "#{chat_path}?sender=#{current_user.id}&receiver=#{@profile_owner.id}" %>
     <%= button_to "Log out", destroy_user_session_path, :method => :delete %>
   </div>
 

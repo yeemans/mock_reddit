@@ -10,6 +10,7 @@ import "channels"
 
 import "trix"
 import "@rails/actiontext"
+import "@hotwired/turbo-rails"
 
 let query = document.getElementById("query"); 
 

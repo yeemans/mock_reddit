@@ -1,0 +1,5 @@
+<%= @message_rooms.count %> 
+<% @message_rooms.each do |room| %>
+  <% @receiver = User.find(room.participants.where.not(user_id: current_user.id)[0].user_id) %>
+  <%= link_to @receiver.username, "#{chat_path}?sender=#{current_user.id}&receiver=#{@receiver.id}" %>
+<% end %>

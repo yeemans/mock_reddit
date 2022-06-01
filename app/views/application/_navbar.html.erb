@@ -7,14 +7,16 @@
   </div>
   
   <div id="links">
-    <%= form_with url: "/search", :id => 'search_form' do |form| %>
+    <%= form_with url: "/search", :id => 'search_form', data: { turbo: false } do |form| %>
       <%= form.text_field :query, :id => "query" %>
+      <input type="submit" style="display: none" />
     <% end %>
     
     <%= link_to image_tag(@avatar) + "<p style='display: inline;'>#{current_user.username}</p>".html_safe, 
     profile_path(current_user.username), id: 'profile' %>
 
     <%= link_to "New Sub", new_subreddit_path %>
+    <%= link_to "Messages", private_messages_path(current_user.username) %>
   </div>
 
   <a href="javascript:void(0);" class="icon" onclick="showNav()">
@@ -22,3 +24,4 @@
   </a>
     
 </nav>
+

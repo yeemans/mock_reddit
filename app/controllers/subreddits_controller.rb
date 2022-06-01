@@ -7,6 +7,8 @@ class SubredditsController < ApplicationController
     @subreddit = Subreddit.create(subreddit_params)
     @moderation = SubredditModeration.create({:moderator_id => current_user.id, 
     :moderated_subreddit_id => @subreddit.id})
+    # create a room for this new sub 
+    @room = Room.create( { :name => "#{@subreddit.title}_room" } )
   end 
 
   def subreddit_params
@@ -17,9 +19,12 @@ class SubredditsController < ApplicationController
     @subreddit = Subreddit.find_by(title: params[:title])
     @posts = @subreddit.posts
     @subscribed = current_user.subreddits.include?(@subreddit)
+    @moderators = @subreddit.moderators
+
     @banner = 'default_banner.png'
     @banner = url_for(@subreddit.banner) if @subreddit.banner.persisted?
-    @moderators = @subreddit.moderators
+
+    @room = Room.find_by(name: "#{@subreddit.title}_room")
   end
 
   def subscribe 

@@ -1,4 +1,4 @@
-<%= form_with model: @subreddit do |form| %>
+<%= form_with model: @subreddit, data: { turbo: false } do |form| %>
   <%= form.label :title, "Title: " %>
   <%= form.text_field :title %>
   <%= form.file_field :banner %>

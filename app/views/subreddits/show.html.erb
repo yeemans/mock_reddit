@@ -11,6 +11,7 @@
 <div class="columns is-multiline" id="subreddit-body">
   <div class="column is-three-fifths">
 
+    <%= link_to "Live #{@subreddit.title} chat", room_path(@room.id) %>
     <% @posts.each do |post| %>
       <%= render :partial => "show_post", :locals => {:post_id => post.id} %>
     <% end %>

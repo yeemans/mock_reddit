@@ -9,10 +9,6 @@ class UsersController < ApplicationController
     redirect_to new_user_session_path unless current_user 
   end
 
-  def show 
-
-  end
-
   def profile 
     @profile_owner = User.find_by(username: params[:name])
 
@@ -43,4 +39,30 @@ class UsersController < ApplicationController
     redirect_to profile_path(current_user.username)
   end
 
+  def chat 
+    @sender = User.find(params[:sender])
+    @receiver = User.find(params[:receiver])
+    @room = Room.new
+    @message = Message.new
+    @room_name = get_name(@sender, @receiver)
+    @single_room = Room.where(name: @room_name).first || Room.create_private_room([@sender, @receiver], @room_name)
+    @messages = @single_room.messages
+  end 
+
+  def messages 
+    @participations = Participant.where(:user_id => current_user.id)
+    @message_rooms = []
+
+    @participations.each do |p| 
+      @message_rooms.append(Room.find(p.room_id))
+    end 
+    return @message_rooms.uniq
+  end
+
+  private
+  def get_name(user1, user2)
+    users = [user1, user2].sort
+    return "private_#{users[0].id}_#{users[1].id}"
+  end
+   
 end

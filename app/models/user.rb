@@ -3,8 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :authentication_keys => [:username]
-         
-  validates :username, uniqueness: true
   
   include PgSearch::Model
   multisearchable against: :username
@@ -18,7 +16,14 @@ class User < ApplicationRecord
   has_many :moderated_subreddits, through: :subreddit_moderations
 
   has_one_attached :avatar
-  has_one_attached :banner 
+  has_one_attached :banner
+
+  has_many :messages
+
+  validates_uniqueness_of :username
+  scope :all_except, ->(user) { where.not(id: user) }
+  after_create_commit { broadcast_append_to "users" }
+
 
   include PgSearch::Model
   multisearchable against: :username
