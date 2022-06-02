@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   def create 
     @comment = Comment.create(post_params)
     @comment.save!
-    
+    redirect_to post_path(@comment.post_id)
   end
 
   def post_params 

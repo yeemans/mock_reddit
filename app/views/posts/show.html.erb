@@ -12,6 +12,12 @@
     <div class="post-body">
       <%= @post.content %> 
     </div>
+
+
+    <% @comments.each do |comment| %>
+      <%= render :partial => 'comment', :locals => {:comment_id => comment.id} %>
+    <% end %>
+
     
   </div>
 

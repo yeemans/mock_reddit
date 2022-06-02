@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @post.body = params[:post][:content]
     @post.save!
     flash[:post_success] = "Post created!" 
+    redirect_to post_path(@post.id)
   end
 
   def post_params 
@@ -26,6 +27,7 @@ class PostsController < ApplicationController
 
     @moderators = @subreddit.moderators
     @comment = Comment.new
+    @comments = @post.comments
   end
 
 end

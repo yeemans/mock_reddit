@@ -6,7 +6,7 @@
     <%= image_tag @avatar, { :id => "profile_pic" } %> 
     <%= render "update_profile_picture" if @is_profile_owner %>
     <%= link_to "Chat", "#{chat_path}?sender=#{current_user.id}&receiver=#{@profile_owner.id}" %>
-    <%= button_to "Log out", destroy_user_session_path, :method => :delete %>
+    <%= button_to "Log out", destroy_user_session_path, :method => :delete if current_user == @profile_owner %>
   </div>
 
   <div class="column is-one-quarter">
@@ -17,12 +17,16 @@
 
     <div class="bio-body">
       <p id="bio-text"> <%= @profile_owner.bio %> </p>
+      
+      <% if current_user == @profile_owner %>
+        <div id="edit_profile_button">
+          <i class="fa fa-edit"> </i>
+        </div>
+        
+        <%= link_to "Save", edit_bio_path, :class => "hidden", :id => "save_bio", 
+        "data-user-id" => @profile_owner.id, "data-bio-path" => edit_bio_path %>
+      <% end %>
 
-      <div id="edit_profile_button">
-        <i class="fa fa-edit"> </i>
-      </div>
-      <%= link_to "Save", edit_bio_path, :class => "hidden", :id => "save_bio", 
-      "data-user-id" => @profile_owner.id, "data-bio-path" => edit_bio_path %>
     </div>
 
   </div>

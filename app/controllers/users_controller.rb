@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [:new, :create, :login, :logout]
 
   def index 
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update 
     current_user.avatar.attach(params[:avatar]) if params[:avatar]
     current_user.banner.attach(params[:banner]) if params[:banner]
-    #redirect_to profile_path({ :name => current_user.username })
+    redirect_to profile_path({ :name => current_user.username })
   end 
 
   def edit_bio 
@@ -52,17 +52,32 @@ class UsersController < ApplicationController
   def messages 
     @participations = Participant.where(:user_id => current_user.id)
     @message_rooms = []
+    @receivers = []
+    @avatars = []
 
     @participations.each do |p| 
-      @message_rooms.append(Room.find(p.room_id))
+      @room = Room.find(p.room_id)
+      @message_rooms.append(@room)
+      @receiver = get_receiver(@room)
+      
+      @receivers.append(@receiver)
+      @receiver.avatar.persisted? ? @avatars.append(@receiver.avatar) : @avatars.append('default.png')
     end 
-    return @message_rooms.uniq
+
+    @message_rooms = @message_rooms.uniq
+    @receivers = @receivers.uniq
   end
 
   private
   def get_name(user1, user2)
     users = [user1, user2].sort
     return "private_#{users[0].id}_#{users[1].id}"
+  end
+
+  def get_receiver(room)
+    talking_to_self = room.participants[0].user_id = room.participants[1].user_id
+    return User.find(room.participants[0].user_id) if talking_to_self
+    return User.find(room.participants.where.not(user_id: current_user.id)[0].user_id)
   end
    
 end

@@ -1,5 +1,18 @@
-<%= @message_rooms.count %> 
-<% @message_rooms.each do |room| %>
-  <% @receiver = User.find(room.participants.where.not(user_id: current_user.id)[0].user_id) %>
-  <%= link_to @receiver.username, "#{chat_path}?sender=#{current_user.id}&receiver=#{@receiver.id}" %>
-<% end %>
+<div class="conversation-container">
+  <% (0..@message_rooms.length - 1).each do |room| %>
+
+    <% @receiver = @receivers[room] %>
+    <% @avatar = @avatars[room] %>
+    <% @room = @message_rooms[room] %>
+
+    <%= image_tag @avatar, :class => "user_listing_pfp" %>
+    <%= link_to @receiver.username, profile_path(@receiver.username), 
+    :class => "black" %>
+
+    <h5> 
+      <%= link_to @room.messages.last.content, "#{chat_path}?sender=#{current_user.id}&receiver=#{@receiver.id}", 
+      :class => "black" %> 
+    </h5>
+
+  <% end %>
+</div>
