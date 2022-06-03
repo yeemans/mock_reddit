@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :authentication_keys => [:username]
+  devise :database_authenticatable, :registerable, :validatable,
+         :recoverable, :rememberable, :authentication_keys => [:username, :email]
+  devise :omniauthable, omniauth_providers: [:google_oauth2]
   
   include PgSearch::Model
   multisearchable against: :username
@@ -20,24 +21,27 @@ class User < ApplicationRecord
 
   has_many :messages
 
-  validates_uniqueness_of :username
+  validates_uniqueness_of :email
+
   scope :all_except, ->(user) { where.not(id: user) }
   after_create_commit { broadcast_append_to "users" }
 
 
   include PgSearch::Model
   multisearchable against: :username
-  
-  def email_required?
-    false
-  end
 
-  def email_changed?
-    false
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(email: data['email']).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    unless user
+      user = User.create(username: data['name'],
+        email: data['email'],
+        password: Devise.friendly_token[0,20]
+      )
+    end
+    user
   end
   
-  # use this instead of email_changed? for Rails = 5.1.x
-  def will_save_change_to_email?
-    false
-  end
 end

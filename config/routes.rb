@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   get 'rooms/index'
   resources :messages
-  devise_for :users, controllers: { sessions: "users/sessions" }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :subreddits, only: [:new, :create]
   resources :posts, only: [:new, :create, :show]
@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :messages
   end
   
-
+  # google omniauth 
+  get '/auth/:provier/callback' => 'sessions#omniauth'
   
   mount ActionCable.server => '/cable'
   

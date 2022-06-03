@@ -34,34 +34,5 @@
 
 <%= javascript_pack_tag 'profile', 'data-turbolinks-track' => false %>
 
-<script>
-
-  // credit to Anurag for Javascript at 
-  // https://stackoverflow.com/questions/2441565/how-do-i-make-a-div-element-editable-like-a-textarea-when-i-click-it
-  
-  function divClicked() {
-    var divHtml = $("#bio-text").html();
-    var editableText = $("<textarea />");
-    var user_id = $("#save_bio")[0].getAttribute("data-user-id");
-    const BIOPATH = $("#save_bio")[0].getAttribute("data-bio-path");
-
-    editableText.val(divHtml);
-    $(this).replaceWith(editableText);
-    editableText.focus();
-    $("#save_bio")[0].href = `${BIOPATH}?user=${user_id}&bio=${editableText.val()}`
-
-    $("#save_bio")[0].classList.remove("hidden");
-    // add the bio parameter to the save_bio link
-    $('textarea').on('input', (event) => {
-      bio = editableText.val();
-      $("#save_bio")[0].href = `${BIOPATH}?user=${user_id}&bio=${bio}`;
-    });
-  }
-
-
-
-  $("#edit_profile_button").click(divClicked);
-
-</script>
 
 

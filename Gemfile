@@ -14,7 +14,6 @@ gem 'pg'
 gem 'pg_search'
 gem 'aws-sdk-s3'
 
-
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -27,14 +26,15 @@ gem 'webpacker', '~> 5.0'
 gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
+gem 'dotenv-rails'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
-
-# Gems to post text and images
-gem 'ckeditor', github: 'galetahub/ckeditor'
-gem "mini_magick"
-
+gem 'better_errors', '~> 2.9', '>= 2.9.1'
+gem 'binding_of_caller', '~> 1.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

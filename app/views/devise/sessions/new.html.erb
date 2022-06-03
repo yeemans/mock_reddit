@@ -3,6 +3,11 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
 
     <label>
+      <%= f.email_field :email %>
+      <div class="label-text">email</div>
+    </label>
+
+    <label>
       <%= f.text_field :username %>
       <div class="label-text">username</div>
     </label>
