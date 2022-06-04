@@ -12,8 +12,7 @@ class UsersController < ApplicationController
   def profile 
     @profile_owner = User.find_by(username: params[:name])
 
-    @avatar = 'default.png'
-    @avatar = url_for(@profile_owner.avatar) if @profile_owner.avatar.persisted? 
+    @avatar = get_avatar(@profile_owner)
 
     @profile_banner = 'default.png'
     @profile_banner = url_for(@profile_owner.banner) if @profile_owner.banner.persisted?

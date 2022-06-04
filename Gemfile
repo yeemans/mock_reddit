@@ -31,6 +31,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'dotenv-rails'
+gem 'down'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'

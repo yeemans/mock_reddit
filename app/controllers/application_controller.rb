@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_application_variables
   helper_method :signed_in_user 
+  helper_method :get_avatar
 
   def signed_in_user
     return current_user 
@@ -17,5 +18,13 @@ class ApplicationController < ActionController::Base
     @signed_in = current_user 
     @has_avatar = current_user.avatar.persisted? if @signed_in
     @avatar = url_for(current_user.avatar) if @signed_in && @has_avatar 
+  end
+
+  protected 
+
+  def get_avatar(user)
+    return url_for(user.avatar) if user.avatar.persisted?
+    return user.omniauth_pfp if user.omniauth_pfp
+    return 'default.png'
   end
 end
