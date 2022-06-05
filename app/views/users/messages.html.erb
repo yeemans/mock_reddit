@@ -1,16 +1,14 @@
 <div class="conversation-container">
-  <% (0..@message_rooms.length - 1).each do |room| %>
 
-    <% @receiver = @receivers[room] %>
-    <% @avatar = @avatars[room] %>
-    <% @room = @message_rooms[room] %>
+  <% @chats.each_with_index do |chat, index| %>
 
-    <%= image_tag @avatar, :class => "user_listing_pfp" %>
-    <%= link_to @receiver.username, profile_path(@receiver.username), 
+    <%= image_tag get_avatar(@receivers[index]), :class => "user_listing_pfp" %>
+    <%= link_to @receivers[index].username, profile_path(@receivers[index].username), 
     :class => "black" %>
 
     <h5> 
-      <%= link_to @room.messages.last.content, "#{chat_path}?sender=#{current_user.id}&receiver=#{@receiver.id}", 
+      <%= link_to chat.messages.last.content, 
+      "#{chat_path}?sender=#{current_user.id}&receiver=#{@receivers[index].id}", 
       :class => "black" %> 
     </h5>
 

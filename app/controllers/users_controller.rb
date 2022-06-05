@@ -49,22 +49,9 @@ class UsersController < ApplicationController
   end 
 
   def messages 
-    @participations = Participant.where(:user_id => current_user.id)
-    @message_rooms = []
+    @chats = get_private_chats(current_user)
     @receivers = []
-    @avatars = []
-
-    @participations.each do |p| 
-      @room = Room.find(p.room_id)
-      @message_rooms.append(@room)
-      @receiver = get_receiver(@room)
-      
-      @receivers.append(@receiver)
-      @receiver.avatar.persisted? ? @avatars.append(@receiver.avatar) : @avatars.append('default.png')
-    end 
-
-    @message_rooms = @message_rooms.uniq
-    @receivers = @receivers.uniq
+    @chats.each { |chat| @receivers.append( get_receiver(chat) ) }
   end
 
   private
@@ -73,10 +60,24 @@ class UsersController < ApplicationController
     return "private_#{users[0].id}_#{users[1].id}"
   end
 
+  def get_private_chats(user)
+    @rooms = Room.where(is_private: true)
+    @rooms_with_user = []
+
+    @rooms.each do |r| 
+      @participants = [User.find( r.participants[0].user_id ), User.find( r.participants[1].user_id ) ]
+      @rooms_with_user.append(r) if @participants.include?(user)
+    end
+
+    return @rooms_with_user
+  end
+
   def get_receiver(room)
-    talking_to_self = room.participants[0].user_id = room.participants[1].user_id
-    return User.find(room.participants[0].user_id) if talking_to_self
-    return User.find(room.participants.where.not(user_id: current_user.id)[0].user_id)
+    @participants = room.participants
+    talking_to_self = @participants[0].user_id == @participants[1].user_id
+    return User.find(@participants[0].user_id) if talking_to_self
+    @participants.each {|p| return User.find(p.user_id) if p.user_id != current_user.id }
+    
   end
    
 end
