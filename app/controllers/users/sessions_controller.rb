@@ -9,9 +9,14 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  #def create
-
-  #end
+  def create
+    self.resource = warden.authenticate(auth_options) 
+    p "WORKING"
+    unless resource # for invalid logins
+      flash[:login_eror] = "Login not recognized :("
+      redirect_to new_user_session_path
+    end
+  end
   # DELETE /resource/sign_out
   # def destroy
   #   super
