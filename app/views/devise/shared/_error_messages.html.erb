@@ -7,9 +7,26 @@
        %>
     </h2>
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+
+      <div class="message is-warning">
+
+        <% resource.errors.full_messages.each do |msg| %>
+          <div class="message-header">
+            <li><%= msg %></li>
+          </div>
+        <% end %>
+
+      </div>
+
     </ul>
   </div>
 <% end %>
+
+<%# for the login page %>
+<% flash.each do |name, msg| %> <%# shows login error messages %>
+  <div class="message is-danger" >
+    <div class="message-header">
+      <p> <%= msg %> </p>
+    </div>
+  </div>
+<% end %> 

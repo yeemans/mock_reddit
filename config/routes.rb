@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   
   get 'rooms/index'
   resources :messages
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', 
-                                    sessions: 'users/sessions' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
   resources :subreddits, only: [:new, :create]
   resources :posts, only: [:new, :create, :show]

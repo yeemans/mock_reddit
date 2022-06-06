@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import url("https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css");
+ @import url("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css");
 
  body { 
    margin: 0;
@@ -493,4 +493,9 @@ figure {
   margin: auto; 
   width: 80%;
   margin-top: 1%;
+}
+
+.error-message-box { 
+  color: #cc0f35; 
+  border-color: #f14668;
 }

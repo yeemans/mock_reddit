@@ -1,7 +1,5 @@
 <div id="login-container">
   <%= render "devise/shared/error_messages", resource: resource %>
-  <%= flash.inspect %>
-  <p> <%= flash[:login_error] %> </p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
 
