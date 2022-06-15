@@ -5,7 +5,7 @@ class Room < ApplicationRecord
   has_many :messages
 
   has_many :participants, dependent: :destroy
-after_create_commit { broadcast_if_public }
+  after_create_commit { broadcast_if_public }
 
   def broadcast_if_public
     broadcast_append_to "rooms" unless self.is_private

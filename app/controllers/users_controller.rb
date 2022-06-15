@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   
   def feed
     redirect_to new_user_session_path unless current_user 
+    @subreddits = current_user.subreddits 
+    @feed_posts = []
+    @subreddits.each { |sub| @feed_posts += sub.posts.last(10) }
   end
 
   def profile 

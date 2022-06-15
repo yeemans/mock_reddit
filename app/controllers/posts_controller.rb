@@ -8,8 +8,11 @@ class PostsController < ApplicationController
   def create  
     @post = current_user.posts.build(post_params) # bind post to user
     @post.subreddit_id = params[:post][:subreddit] # bind post to subreddit 
+    
     @post.body = params[:post][:content]
+    @post.upvotes = 0
     @post.save!
+
     flash[:post_success] = "Post created!" 
     redirect_to post_path(@post.id)
   end

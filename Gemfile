@@ -36,6 +36,8 @@ gem 'down'
 gem 'image_processing', '~> 1.2'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'binding_of_caller', '~> 1.0'
+
+gem 'webpacker-react', "~> 1.0.0.beta.1"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

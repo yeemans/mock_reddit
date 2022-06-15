@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_050432) do
+ActiveRecord::Schema.define(version: 2022_06_15_042743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 2022_06_04_050432) do
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
+  create_table "likings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_likings_on_post_id"
+    t.index ["user_id"], name: "index_likings_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
@@ -119,6 +128,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_050432) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "subreddit_id"
     t.string "title"
+    t.integer "upvotes"
     t.index ["subreddit_id"], name: "index_posts_on_subreddit_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

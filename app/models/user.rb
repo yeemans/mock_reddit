@@ -9,6 +9,7 @@ class User < ApplicationRecord
   multisearchable against: :username
 
   has_many :posts
+  has_many :likings
 
   has_many :subscriptions
   has_many :subreddits, through: :subscriptions
