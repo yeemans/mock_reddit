@@ -1,15 +1,9 @@
 <%= current_user.username %>
 
+<%= render partial: "subscribed_subreddits" %>
+
 <% @feed_posts.each do |post| %>
-
-  <%= react_component("Post", 
-  { title: post.title, 
-    body: post.body, 
-    user: User.find(post.user_id).username, 
-    subreddit: Subreddit.find(post.subreddit_id).title, 
-    upvotes: post.upvotes } ) 
-  %>
-
+  <%= render partial: "feed_post_listing", locals: {post_id: post.id} %>
 <% end %>
 
 

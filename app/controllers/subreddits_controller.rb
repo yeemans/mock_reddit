@@ -21,8 +21,7 @@ class SubredditsController < ApplicationController
     @subscribed = current_user.subreddits.include?(@subreddit)
     @moderators = @subreddit.moderators
 
-    @banner = 'default_banner.png'
-    @banner = url_for(@subreddit.banner) if @subreddit.banner.persisted?
+    @banner = get_banner(@subreddit)
 
     @room = Room.find_by(name: "#{@subreddit.title}_room")
   end
@@ -59,4 +58,6 @@ class SubredditsController < ApplicationController
     @subreddit.save!
     redirect_to r_path(@subreddit.title)
   end
+
+  
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_application_variables
   helper_method :signed_in_user 
   helper_method :get_avatar
+  helper_method :get_banner
 
   def signed_in_user
     return current_user 
@@ -26,5 +27,11 @@ class ApplicationController < ActionController::Base
     return url_for(user.avatar) if user.avatar.persisted?
     return user.omniauth_pfp if user.omniauth_pfp
     return 'default.png'
+  end
+
+  def get_banner(subreddit)
+    banner = "default_banner.png"
+    banner = url_for(subreddit.banner) if subreddit.banner.persisted? 
+    return banner
   end
 end

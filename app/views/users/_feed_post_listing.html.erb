@@ -2,7 +2,7 @@
 <div class="post-header">
 
   <% subreddit = Subreddit.find(post.subreddit_id)%>
-  <% banner = get_banner(subreddit)
+  <% banner = get_banner(subreddit) %>
 
   <%= image_tag url_for(banner), :class => "circular_sub_icon"  %>
   <%= link_to "r/#{subreddit.title}", r_path(subreddit.title), :class => "inline-text" %>

@@ -25,8 +25,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @subreddit = Subreddit.find(@post.subreddit_id)
 
-    @banner = 'default_banner.png'
-    @banner = @subreddit.banner if @subreddit.banner.persisted?
+    @banner = get_banner(@subreddit)
 
     @moderators = @subreddit.moderators
     @comment = Comment.new
