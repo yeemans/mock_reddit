@@ -9,6 +9,7 @@ class SubredditsController < ApplicationController
     :moderated_subreddit_id => @subreddit.id})
     # create a room for this new sub 
     @room = Room.create( { :name => "#{@subreddit.title}_room" } )
+    redirect_to r_path(@subreddit.title)
   end 
 
   def subreddit_params

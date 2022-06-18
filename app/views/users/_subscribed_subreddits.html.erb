@@ -3,9 +3,18 @@
 <div class="columns is-centered">
 
   <% subreddits.each do |sub| %>
-    <div class="column is-2 subreddit-card">
-      <p> <%= sub.title %> </p>
+    <% sub_path = r_path(sub.title) %>
+    <div class="column is-2 subreddit-card" data-banner= <%= get_banner(sub) %> data-sub_link= <%= sub_path %> >
+      <%= link_to sub.title, r_path(sub.title), :class => "black" %> 
     </div>
   <% end %>
 
 </div>
+
+<%= javascript_pack_tag "card_backgrounds.js" %>
+
+<script>
+  function redirect (link) { 
+    window.location.href = link;
+  }
+</script>

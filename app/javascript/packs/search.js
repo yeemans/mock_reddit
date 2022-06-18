@@ -3,7 +3,6 @@ function show_models(category, categories) {
         categories[i].style.display = "none";
     }
     document.getElementById(category).style.display = "block";
-    console.log('test');
 }
   
 let subreddit_div = document.getElementById("subreddit-list");
@@ -20,5 +19,3 @@ let categories = [subreddit_div, post_div, user_div];
 for (let i = 0; i < buttons.length; i++) { 
     buttons[i].onclick = function(){ show_models(categories[i].id, categories) };
 }
-
-// post_button.onclick = function(){show_models(post_div.id, categories)};

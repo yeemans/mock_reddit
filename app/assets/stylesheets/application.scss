@@ -42,33 +42,12 @@ nav {
     font-family: "Helvetica Neue", Lato;
     background: #333333; 
     margin-top: 0px;
+    text-align: center;
 }
 
 nav a { 
   color: #EEEEEE;
   font-size: 1.25em;
-}
-
-.topnav {
-  overflow: hidden;
-  background: #003366;
-  position: relative;
-}
-
-/* Hide the links inside the navigation menu (except for logo/home) */
-.topnav #links {
-  display: none;
-}
-
-/* Style the active link (or home/logo) */
-.active {
-  background: #003366;
-  color: white;
-  position: relative;
-}
-
-.active a { 
-  display: inline;
 }
 
 #profile, #search_form, .inline-text, #home { 
@@ -96,61 +75,29 @@ nav a {
   font-size: 17px;
 }
 
+#logo { 
+  float: left;
+}
+
+#logo-text { 
+  color: white; 
+  font-family: Lato;
+  display: inline;
+}
+
+
 #query { 
   margin: auto;
-  width: 50%;
+  width: 30%;
   border-radius: 10px;
   height: 1.5em;
 }
-
-#links * {
-  display: block;
-}
-
-#links { 
-  line-height: 10vh;
-}
-
-#post { 
-  margin-left: 84%;
-}
-
 /* Style the hamburger menu vertical center*/
 
-.fa-pencil { 
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
 
-.icon {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 95%;
-  transform: translate(-50%,-50%);
-}
 
-i:hover { 
-  color: blue;
-}
-
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change background on mouse-over */
-.navbar a:hover {
-  background: #ddd;
-  color: black;
+.subreddit-card:hover { 
+  cursor: pointer;
 }
 
 #login-container { 
@@ -504,5 +451,5 @@ figure {
   border-style: solid; 
   border-width: 0px;
   border-radius: 5%;
-
+  height: 30vh;
 }

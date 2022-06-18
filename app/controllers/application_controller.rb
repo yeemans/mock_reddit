@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_banner(subreddit)
-    banner = "default_banner.png"
+    banner = ActionController::Base.helpers.image_url('default_banner.png')
     banner = url_for(subreddit.banner) if subreddit.banner.persisted? 
     return banner
   end
