@@ -36,17 +36,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
         crossorigin="anonymous">
     </script>
-
-    <script>
-        function showNav() {
-            var links = document.getElementById("links");
-            if (links.style.display === "block") {
-                links.style.display = "none";
-            } else {
-                links.style.display = "block";
-            }
-        }
-    </script>
+    
     <%= render "navbar" if current_user %>
  
     <%= yield %>
