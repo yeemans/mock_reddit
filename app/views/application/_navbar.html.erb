@@ -1,22 +1,23 @@
 <% @avatar = get_avatar(current_user) %>
 <nav class="topnav">
 
+  
   <div id="logo">
     <%= link_to image_tag("reddit.png"),root_path, id: 'home' %>
-    <h4 id="logo-text"> Breaddit </h4>
+    <%= link_to '<h4 id="logo-text"> Breaddit </h4>'.html_safe, root_path %>
   </div>
 
   <div id="nav-links">
 
     <%= form_with url: "/search", :id => 'search_form', data: { turbo: false } do |form| %>
       <%= form.text_field :query, :id => "query" %>
-      <input type="submit" style="display: none" />
+      <%= form.submit "Hidden", :style => "display: none" %>
     <% end %>
 
     <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, new_post_path, id: 'post' %>
 
-    <%= link_to "New Sub", new_subreddit_path %>
-    <%= link_to "Messages", private_messages_path(current_user.username) %>
+    <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_subreddit_path %>
+    <%= link_to '<i class="fa fa-envelope"></i>'.html_safe, private_messages_path(current_user.username) %>
 
     <%= link_to image_tag(@avatar) + "<p style='display: inline;'>#{current_user.username}</p>".html_safe, 
     profile_path(current_user.username), id: 'profile' %>
