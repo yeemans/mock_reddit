@@ -1,20 +1,49 @@
 <% post = Post.find(post_id) %>
-<div class="post-header">
+<div class="columns">
 
-  <% subreddit = Subreddit.find(post.subreddit_id)%>
-  <% banner = get_banner(subreddit) %>
+  <div class="column is-1 upvote-column">
 
-  <%= image_tag url_for(banner), :class => "circular_sub_icon"  %>
-  <%= link_to "r/#{subreddit.title}", r_path(subreddit.title), :class => "inline-text" %>
-  <%= link_to "Posted by u/#{post.user.username}", profile_path(post.user.username), :class => "inline-text" %>
-    
-</div>
+    <% if has_liked_post(current_user, post) %>
 
-<div class="post-content" >
-  <%= link_to post.title, post_path(post.id), :class => "post_title" %>
-  <% if post.content.embeds.first %>
-    <p>
-      <%= render :partial => "embed_representation", :locals => {:post_id => post.id} %>
-    </p>
-  <% end %>
+      <%= link_to "<i class='fa fa-arrow-up fa-lg upvoted' id='upvote-icon-#{post_id}'></i>".html_safe, 
+      upvote_post_test_path(:format => :js, :id => post_id, 
+      :liking => {:user_id => current_user.id, :post_id => post_id, :is_upvote => true}),
+      :class => "upvote-button", 
+      :id => "upvote-button-#{post_id}" %>
+
+    <% else %>
+
+      <%= link_to "<i class='fa fa-arrow-up fa-lg' id='upvote-icon-#{post_id}'></i>".html_safe, 
+      upvote_post_test_path(:format => :js, :id => post_id, 
+      :liking => {:user_id => current_user.id, :post_id => post_id, :is_upvote => true}),
+      :class => "upvote-button", 
+      :id => "upvote-button-#{post_id}" %>
+
+    <% end %>
+
+    <h6 id = <%= "upvote-count-#{post_id}" %>> <%= get_upvote_count(post) %> </h6>
+    <i class="fa fa-arrow-down fa-lg downvoted" id = <%= "post-#{post_id}" %> > </i>
+  </div>
+  
+  <div class="column is-9">
+    <div class="post-header">
+
+      <% subreddit = Subreddit.find(post.subreddit_id) %>
+      <% banner = get_banner(subreddit) %>
+
+      <%= image_tag url_for(banner), :class => "circular_sub_icon"  %>
+      <%= link_to "r/#{subreddit.title}", r_path(subreddit.title), :class => "inline-text" %>
+      <%= link_to "Posted by u/#{post.user.username}", profile_path(post.user.username), :class => "inline-text" %>
+        
+    </div>
+
+    <div class="post-content" >
+      <%= link_to post.title, post_path(post.id), :class => "post_title" %>
+      <% if post.content.embeds.first %>
+        <p>
+          <%= render :partial => "embed_representation", :locals => {:post_id => post.id} %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>

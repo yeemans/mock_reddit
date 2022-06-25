@@ -313,6 +313,7 @@ figure img {
 #subreddit-description, #bio-text { 
   margin-top: 5%;
   font-family: Lato;
+  word-wrap: break-word;
 }
 
 #moderator-header { 
@@ -452,3 +453,17 @@ figure {
   border-radius: 5%;
   height: 30vh;
 }
+
+.upvote-column { 
+  margin-left: 10%;
+  text-align: center;
+}
+
+a .fa-arrow-up { 
+  color: gray;
+}
+
+.upvoted { 
+  color: orangered !important;
+}
+

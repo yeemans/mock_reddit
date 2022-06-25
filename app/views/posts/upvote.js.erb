@@ -1,0 +1,19 @@
+function decrement(upvote_count_tag) { 
+    let count_text = +upvote_count_tag.textContent - 1
+    upvote_count_tag.textContent = +upvote_count_tag.textContent - 1;
+} 
+
+function increment(upvote_count_tag) { 
+    let count_text = +upvote_count_tag.textContent + 1
+    upvote_count_tag.textContent = +upvote_count_tag.textContent + 1;
+}
+
+if ( $("#upvote-icon-<%= params[:id] %>")[0].classList.contains("upvoted") ) { 
+    // decrement the upvote count
+    decrement($("#upvote-count-<%= params[:id] %>")[0])
+} else { 
+    increment($("#upvote-count-<%= params[:id] %>")[0])
+}
+
+$("#upvote-icon-<%= params[:id] %>")[0].classList.toggle("upvoted");
+

@@ -3,6 +3,7 @@ class CreateLikings < ActiveRecord::Migration[6.1]
     create_table :likings do |t|
       t.references :user 
       t.references :post
+      t.boolean :is_upvote, :default => true
       t.timestamps
     end
   end

@@ -3,6 +3,11 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+//= require jquery
+//= require jquery-ujs
+//= require rails-ujs
+//= require activestorage
+
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -13,6 +18,7 @@ import "trix"
 import "@rails/actiontext"
 import "@hotwired/turbo-rails"
 
+
 let query = document.getElementById("query"); 
 
 query.addEventListener("keyup", function(event) {
@@ -21,6 +27,10 @@ query.addEventListener("keyup", function(event) {
     }
 }); 
 
+ $.ajaxSetup({  
+    'beforeSend': function (xhr) {xhr.setRequestHeader('Content-Type', 'application/javascript');}  
+ }); 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -28,4 +38,5 @@ ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")// Support component names relative to this directory:
+
 

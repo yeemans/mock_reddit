@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :except => [:new, :create, :login, :logout]
 
+  respond_to :html, :js
+
   def index 
 
   end 
@@ -82,5 +84,5 @@ class UsersController < ApplicationController
     @participants.each {|p| return User.find(p.user_id) if p.user_id != current_user.id }
     
   end
-   
+
 end

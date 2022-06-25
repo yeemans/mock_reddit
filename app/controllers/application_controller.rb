@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_application_variables
+
   helper_method :signed_in_user 
   helper_method :get_avatar
   helper_method :get_banner
+  helper_method :get_upvote_count
+  helper_method :get_liked_posts 
+  helper_method :has_liked_post
 
   def signed_in_user
     return current_user 
@@ -34,4 +38,26 @@ class ApplicationController < ActionController::Base
     banner = url_for(subreddit.banner) if subreddit.banner.persisted? 
     return banner
   end
+
+  def get_upvote_count(post)
+    upvotes = post.likings.where(:is_upvote => true).count
+    downvotes = post.likings.where(:is_upvote => false).count
+    return upvotes - downvotes
+  end
+
+  def get_liked_posts(user)
+    liked_posts = []
+
+    user.likings.each do |liking| 
+      liked_posts.push(Post.find(liking.post_id))
+    end
+
+    return liked_posts
+  end
+
+  def has_liked_post(user, post)
+    liked_posts = get_liked_posts(user)
+    return liked_posts.include?(post)
+  end
+
 end

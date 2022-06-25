@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   
   root to: "users#feed"
+  post "/", to: "users#feed"
 
   post '/rooms/index', to: 'rooms#index'
 
@@ -40,7 +41,9 @@ Rails.application.routes.draw do
   get '/:name/edit_bio', to: 'users#edit_bio', :as => :edit_bio  
   get '/chat', to: 'users#chat', :as => :chat
   get '/u/:name/messages', to: 'users#messages', :as => :private_messages
-
+  get '/create_liking', to: 'users#create_liking', :as => :create_liking
+  get '/posts/:id/upvote', to: 'posts#upvote', :as => :upvote_post
+  post '/posts/:id/upvote', to: 'posts#upvote', :as => :upvote_post_test
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

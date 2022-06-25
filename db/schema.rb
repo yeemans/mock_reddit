@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_06_15_042743) do
   create_table "likings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "post_id"
+    t.boolean "is_upvote", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_likings_on_post_id"
@@ -128,7 +129,6 @@ ActiveRecord::Schema.define(version: 2022_06_15_042743) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "subreddit_id"
     t.string "title"
-    t.integer "upvotes"
     t.index ["subreddit_id"], name: "index_posts_on_subreddit_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
