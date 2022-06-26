@@ -1,0 +1,13 @@
+<% post = Post.find(post_id) %>
+
+<%= link_to "<i class='fa fa-arrow-up fa-lg' id='upvote-icon-#{post_id}'></i>".html_safe, 
+upvote_post_test_path(:format => :js, :id => post_id, 
+:liking => {:user_id => current_user.id, :post_id => post_id, :is_upvote => true}),
+:class => "upvote-button", 
+:id => "upvote-button-#{post_id}" %>
+
+<% if has_liked_post(current_user, post) %>
+  <script>
+    $("#upvote-icon-<%= post_id %>")[0].classList.add("upvoted");
+  </script>
+<% end %>

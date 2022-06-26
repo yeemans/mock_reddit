@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   helper_method :get_upvote_count
   helper_method :get_liked_posts 
   helper_method :has_liked_post
+  helper_method :has_disliked_post
+  helper_method :get_opposite_liking
 
   def signed_in_user
     return current_user 
@@ -49,7 +51,7 @@ class ApplicationController < ActionController::Base
     liked_posts = []
 
     user.likings.each do |liking| 
-      liked_posts.push(Post.find(liking.post_id))
+      liked_posts.push(Post.find(liking.post_id)) if liking.is_upvote 
     end
 
     return liked_posts
@@ -58,6 +60,26 @@ class ApplicationController < ActionController::Base
   def has_liked_post(user, post)
     liked_posts = get_liked_posts(user)
     return liked_posts.include?(post)
+  end
+
+  def has_disliked_post(user, post)
+    dislikes = user.likings.where(:is_upvote => false)
+
+    dislikes.each do |dislike| 
+      return true if dislike.post_id == post.id
+    end
+
+    return false
+  end
+
+  def get_opposite_liking(user, liking)
+    if liking.is_upvote
+      liking_params = { :user_id => liking.user_id, :post_id => liking.post_id, :is_upvote => false }
+    else
+      liking_params = { :user_id => liking.user_id, :post_id => liking.post_id, :is_upvote => true }
+    end 
+
+    return Liking.where(liking_params)
   end
 
 end

@@ -1,19 +1,67 @@
-function decrement(upvote_count_tag) { 
-    let count_text = +upvote_count_tag.textContent - 1
-    upvote_count_tag.textContent = +upvote_count_tag.textContent - 1;
+//<script>
+// use functions to return variables because they otherwise through redeclaring errors
+function upvote_count() { 
+    return $("#upvote-count-<%= params[:id] %>")[0];
+}
+
+function upvote_icon() { 
+    return $("#upvote-icon-<%= params[:id] %>")[0];
+}
+
+function downvote_icon() { 
+    return $("#downvote-icon-<%= params[:id] %>")[0];
+}
+
+function upvote_decrement() { 
+    let upvotes = upvote_count();
+    let count_text = +upvotes.textContent - 1; 
+    upvotes.textContent = count_text;
 } 
 
-function increment(upvote_count_tag) { 
-    let count_text = +upvote_count_tag.textContent + 1
-    upvote_count_tag.textContent = +upvote_count_tag.textContent + 1;
+function upvote_increment() { 
+    let upvotes = upvote_count();
+
+    let amount = 1; 
+    if (downvote_icon().classList.contains("downvoted")) { amount = 2 };
+    upvotes.textContent = +upvotes.textContent + amount;
 }
 
-if ( $("#upvote-icon-<%= params[:id] %>")[0].classList.contains("upvoted") ) { 
-    // decrement the upvote count
-    decrement($("#upvote-count-<%= params[:id] %>")[0])
+function downvote_decrement() { 
+    let upvotes = upvote_count(); 
+    let amount = 1; 
+    if (upvote_icon().classList.contains("upvoted")) { amount = 2 };
+    upvotes.textContent = +upvotes.textContent - amount;
+}
+
+function downvote_increment() { 
+    let upvotes = upvote_count();
+    let count_text = +upvotes.textContent + 1; 
+    upvotes.textContent = count_text;
+}
+
+if (<%= params[:is_upvote] %>) {
+    if ( upvote_icon().classList.contains("upvoted") ) { 
+        // decrement the upvote count
+        upvote_decrement()
+    } else { 
+        upvote_increment()
+    }
+}
+
+if (!<%= params[:is_upvote] %>) { 
+    if ( downvote_icon().classList.contains("downvoted") ) { 
+        downvote_increment();
+    } else { 
+        downvote_decrement();
+    }
+}
+
+if (<%= params[:is_upvote] %>) { 
+    $("#upvote-icon-<%= params[:id] %>")[0].classList.toggle("upvoted");
+    $("#downvote-icon-<%= params[:id] %>")[0].classList.remove("downvoted");
 } else { 
-    increment($("#upvote-count-<%= params[:id] %>")[0])
+    $("#downvote-icon-<%= params[:id] %>")[0].classList.toggle("downvoted");
+    $("#upvote-icon-<%= params[:id] %>")[0].classList.remove("upvoted");
 }
 
-$("#upvote-icon-<%= params[:id] %>")[0].classList.toggle("upvoted");
-
+console.log(<%= params[:is_upvote] %>)

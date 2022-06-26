@@ -37,6 +37,10 @@ class PostsController < ApplicationController
   end
   
   def upvote
+    @opposite_liking = get_opposite_liking(current_user, Liking.new(liking_params)).first
+
+    @opposite_liking.destroy if @opposite_liking
+
     @already_liked = Liking.where(liking_params)
 
     if @already_liked.empty?

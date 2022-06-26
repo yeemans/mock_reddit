@@ -6,26 +6,7 @@
   <%= render partial: "feed_post_listing", locals: {post_id: post.id} %>
 <% end %>
 
-<script>
-
-    function create_upvote() {   
-        $.ajax({
-            type: 'GET',
-            url: this.href,
-            dataType: 'script'
-        })
-        return false;
-    }
-
-    function assign_upvote_links(buttons) {
-        for (let i = 0; i < buttons.length; i++) { 
-            buttons[i].onclick = create_upvote;
-        }; 
-    }
-
-    assign_upvote_links($(".upvote-button"));
-    
-</script>
+<%= javascript_pack_tag "update_upvotes.js" %>
 
 
 

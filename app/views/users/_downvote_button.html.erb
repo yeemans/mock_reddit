@@ -1,0 +1,13 @@
+<% post = Post.find(post_id) %>
+
+<%= link_to "<i class='fa fa-arrow-down fa-lg' id='downvote-icon-#{post_id}'></i>".html_safe, 
+upvote_post_test_path(:format => :js, :id => post_id, 
+:liking => {:user_id => current_user.id, :post_id => post_id, :is_upvote => false}),
+:class => "downvote-button", 
+:id => "downvote-button-#{post_id}" %>
+
+<% if has_disliked_post(current_user, post) %>
+  <script>
+    $("#downvote-icon-<%= post_id %>")[0].classList.add("downvoted");
+  </script>
+<% end %>

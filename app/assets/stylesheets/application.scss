@@ -459,7 +459,7 @@ figure {
   text-align: center;
 }
 
-a .fa-arrow-up { 
+a .fa-arrow-up, a .fa-arrow-down { 
   color: gray;
 }
 
@@ -467,3 +467,6 @@ a .fa-arrow-up {
   color: orangered !important;
 }
 
+.downvoted { 
+  color: blue !important;
+}
