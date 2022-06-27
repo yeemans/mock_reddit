@@ -9,7 +9,7 @@
       <p> <%= @post.title %> </p>
     </div>
 
-    <div class="post-body">
+    <div class="post-body" style="overflow: scroll;">
       <%= @post.content %> 
     </div>
 
@@ -18,7 +18,7 @@
       <%= render :partial => 'comment', :locals => {:comment_id => comment.id} %>
     <% end %>
 
-    
+  <%= render :partial => "post_comment", :locals => {:post_id => @post.id} %>
   </div>
 
   <div class="column is-one-quarter">
@@ -39,11 +39,8 @@
 
     <% @moderators.each do |mod| %>
       <%= link_to "u/#{mod.username}", profile_path(mod.username) %>
-    <% end %>
+    <% end %>    
     
-    <%= render :partial => "post_comment", :locals => {:post_id => @post.id} %>
   </div>
-
-
-  
 </div>
+
