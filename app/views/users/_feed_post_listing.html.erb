@@ -2,11 +2,7 @@
 <div class="columns">
 
   <div class="column is-1 upvote-column">
-
-    <%= render :partial => "upvote_button", locals: {:post_id => post_id} %>
-    <h6 id = <%= "upvote-count-#{post_id}" %>> <%= get_upvote_count(post) %> </h6>
-    <%= render :partial => "downvote_button", locals: {:post_id => post_id}%>
-
+    <%= render :partial => "layouts/vote_buttons", :locals => {:post_id => post_id} %>
   </div>
   
   <div class="column is-9">

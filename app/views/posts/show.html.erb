@@ -3,6 +3,7 @@
 <div class="columns is-multiline" id="subreddit-body">
   <div class="column is-three-fifths">
 
+    <%= render :partial => "layouts/vote_buttons", :locals => {:post_id => @post.id} %>
     <div class="post-header">
       <%= link_to "Posted by u/#{@post.user.username}", profile_path(@post.user.username),
       :class => "post-username" %>
@@ -43,4 +44,6 @@
     
   </div>
 </div>
+
+<%= javascript_pack_tag "update_upvotes.js" %>
 

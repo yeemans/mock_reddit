@@ -1,0 +1,4 @@
+<% post = Post.find(post_id) %>
+<%= render :partial => "layouts/upvote_button", locals: {:post_id => post_id} %>
+<h6 id = <%= "upvote-count-#{post_id}" %>> <%= get_upvote_count(post) %> </h6>
+<%= render :partial => "layouts/downvote_button", locals: {:post_id => post_id}%>
