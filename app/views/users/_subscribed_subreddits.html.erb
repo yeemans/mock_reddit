@@ -5,7 +5,7 @@
   <% subreddits.each do |sub| %>
     <% sub_path = r_path(sub.title) %>
     <div class="column is-2 subreddit-card" data-banner= <%= get_banner(sub) %> data-sub_link= <%= sub_path %> >
-      <%= link_to sub.title, r_path(sub.title), :class => "black" %> 
+      <%= link_to sub.title, r_path(sub.title), :class => "white-text" %> 
     </div>
   <% end %>
 

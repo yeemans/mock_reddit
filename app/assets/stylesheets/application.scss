@@ -396,6 +396,12 @@ figure {
   color: black;
 }
 
+.white-text { 
+  color: white;
+  font-size: 1.25em;
+  margin-top: 50%;
+}
+
 .profile-container { 
   justify-content: space-between; 
   width: 80%; 
@@ -453,6 +459,11 @@ figure {
   border-width: 0px;
   border-radius: 5%;
   height: 30vh;
+  box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0, .5)
+}
+
+.subreddit-card background { 
+  filter: brightness(50%);
 }
 
 .upvote-column { 
