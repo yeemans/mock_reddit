@@ -1,13 +1,18 @@
 <%= image_tag @banner, :id => "subreddit_banner" %>
 
 <div class="columns is-multiline" id="subreddit-body">
-  <div class="column is-three-fifths">
+  <div class="column is-three-fifths is-multiline">
 
-    <%= render :partial => "layouts/vote_buttons", :locals => {:post_id => @post.id} %>
-    <div class="post-header">
-      <%= link_to "Posted by u/#{@post.user.username}", profile_path(@post.user.username),
-      :class => "post-username" %>
-      <p> <%= @post.title %> </p>
+    <div class="columns">
+      <div class="column is-1">
+        <%= render :partial => "layouts/vote_buttons", :locals => {:post_id => @post.id} %>
+      </div>
+
+      <div class="post-header column is-3">
+        <%= link_to "Posted by u/#{@post.user.username}", profile_path(@post.user.username),
+        :class => "post-username" %>
+        <p> <%= @post.title %> </p>
+      </div>
     </div>
 
     <div class="post-body" style="overflow: scroll;">
