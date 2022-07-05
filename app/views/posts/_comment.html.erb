@@ -1,11 +1,17 @@
 <% @comment = Comment.find(comment_id) %>
+
 <% @user = @comment.user %>
 <% avatar = 'default.png' %>
 <% avatar = url_for(@user.avatar) if @user.avatar.persisted? %>
 
 <div class="comment">
+  <%= render :partial => "layouts/comment_vote_buttons", :locals => {:comment_id => comment_id} %>
   <%= image_tag avatar, :class => "comment_listing_pfp" %>
   <%= link_to "#{@user.username}", profile_path(@user.username), :class => "black" %>
+
   <br />
   <p> <%= @comment.body %> </p>
+  <%= link_to "Reply", reply_to_comment_path(comment_id), :class => "reply-button", :format => :js,
+  :id => comment_id %>
+
 </div>

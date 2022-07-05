@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get '/create_liking', to: 'users#create_liking', :as => :create_liking
   get '/posts/:id/upvote', to: 'posts#upvote', :as => :upvote_post
   post '/posts/:id/upvote', to: 'posts#upvote', :as => :upvote_post_test
+  get '/comments/:id/upvote', to: 'comments#upvote', :as => :upvote_comment
+  get '/comment/:id/reply', to: 'comments#reply', :as => :reply_to_comment
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

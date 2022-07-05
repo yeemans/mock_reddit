@@ -1,0 +1,4 @@
+<% comment = Comment.find(comment_id) %>
+<%= render :partial => "layouts/comment_upvote_button", locals: {:comment_id => comment_id} %>
+<h6 id = <%= "comment-upvote-count-#{comment_id}" %>> <%= get_comment_upvote_count(comment) %> </h6>
+<%= render :partial => "layouts/comment_downvote_button", locals: {:comment_id => comment_id}%>

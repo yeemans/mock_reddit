@@ -5,9 +5,17 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in_user 
   helper_method :get_avatar
   helper_method :get_banner
+
   helper_method :get_upvote_count
+  helper_method :get_comment_upvote_count
+
   helper_method :get_liked_posts 
   helper_method :has_liked_post
+
+  helper_method :get_liked_comments 
+  helper_method :has_liked_comment
+  helper_method :has_disliked_comment
+  
   helper_method :has_disliked_post
   helper_method :get_opposite_liking
 
@@ -47,6 +55,12 @@ class ApplicationController < ActionController::Base
     return upvotes - downvotes
   end
 
+  def get_comment_upvote_count(comment)
+    upvotes = comment.comment_likings.where(:is_upvote => true).count
+    downvotes = comment.comment_likings.where(:is_upvote => false).count
+    return upvotes - downvotes
+  end
+
   def get_liked_posts(user)
     liked_posts = []
 
@@ -55,6 +69,16 @@ class ApplicationController < ActionController::Base
     end
 
     return liked_posts
+  end
+
+  def get_liked_comments(user)
+    liked_comments = []
+
+    user.comment_likings.each do |liking| 
+      liked_comments.push(Comment.find(liking.comment_id)) if liking.is_upvote 
+    end
+
+    return liked_comments
   end
 
   def has_liked_post(user, post)
@@ -72,6 +96,20 @@ class ApplicationController < ActionController::Base
     return false
   end
 
+  def has_liked_comment(user, comment)
+    liked_comments = get_liked_comments(user)
+    return liked_comments.include?(comment)
+  end
+
+  def has_disliked_comment(user, comment)
+
+    user.comment_likings.each do |liking| 
+      return true if liking.comment_id == comment.id && liking.is_upvote == false 
+    end
+
+    return false
+  end
+
   def get_opposite_liking(user, liking)
     if liking.is_upvote
       liking_params = { :user_id => liking.user_id, :post_id => liking.post_id, :is_upvote => false }
@@ -80,6 +118,16 @@ class ApplicationController < ActionController::Base
     end 
 
     return Liking.where(liking_params)
+  end
+
+  def get_opposite_comment_liking(user, liking)
+    if liking.is_upvote
+      liking_params = { :user_id => liking.user_id, :comment_id => liking.comment_id, :is_upvote => false }
+    else
+      liking_params = { :user_id => liking.user_id, :comment_id => liking.comment_id, :is_upvote => true }
+    end 
+
+    return CommentLiking.where(liking_params)
   end
 
 end

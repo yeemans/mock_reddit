@@ -1,0 +1,67 @@
+//<script>
+// use functions to return variables because they otherwise through redeclaring errors
+function upvote_count() { 
+    return $("#comment-upvote-count-<%= params[:id] %>")[0];
+}
+
+function upvote_icon() { 
+    return $("#upvote-comment-icon-<%= params[:id] %>")[0];
+}
+
+function downvote_icon() { 
+    return $("#downvote-comment-icon-<%= params[:id] %>")[0];
+}
+
+function upvote_decrement() { 
+    let upvotes = upvote_count();
+    let count_text = +upvotes.textContent - 1; 
+    upvotes.textContent = count_text;
+} 
+
+function upvote_increment() { 
+    let upvotes = upvote_count();
+
+    let amount = 1; 
+    if (downvote_icon().classList.contains("downvoted")) { amount = 2 };
+    upvotes.textContent = +upvotes.textContent + amount;
+}
+
+function downvote_decrement() { 
+    let upvotes = upvote_count(); 
+    let amount = 1; 
+    if (upvote_icon().classList.contains("upvoted")) { amount = 2 };
+    upvotes.textContent = +upvotes.textContent - amount;
+}
+
+function downvote_increment() { 
+    let upvotes = upvote_count();
+    let count_text = +upvotes.textContent + 1; 
+    upvotes.textContent = count_text;
+}
+
+if (<%= params[:is_upvote] %>) {
+    if ( upvote_icon().classList.contains("upvoted") ) { 
+        // decrement the upvote count
+        upvote_decrement()
+    } else { 
+        upvote_increment()
+    }
+}
+
+if (!<%= params[:is_upvote] %>) { 
+    if ( downvote_icon().classList.contains("downvoted") ) { 
+        downvote_increment();
+    } else { 
+        downvote_decrement();
+    }
+}
+
+if (<%= params[:is_upvote] %>) { 
+    $("#upvote-comment-icon-<%= params[:id] %>")[0].classList.toggle("upvoted");
+    $("#downvote-comment-icon-<%= params[:id] %>")[0].classList.remove("downvoted");
+} else { 
+    $("#downvote-comment-icon-<%= params[:id] %>")[0].classList.toggle("downvoted");
+    $("#upvote-comment-icon-<%= params[:id] %>")[0].classList.remove("upvoted");
+}
+
+console.log(<%= params[:is_upvote] %>)

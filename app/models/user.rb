@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :likings
+  has_many :comment_likings
 
   has_many :subscriptions
   has_many :subreddits, through: :subscriptions

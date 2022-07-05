@@ -1,0 +1,14 @@
+<% comment = Comment.find(comment_id) %>
+
+<%= link_to "<i class='fa fa-arrow-up fa-lg' id='upvote-comment-icon-#{comment_id}'></i>".html_safe, 
+upvote_comment_path(:format => :js, :id => comment_id, 
+:liking => {:user_id => current_user.id, :comment_id => comment_id, :is_upvote => true}),
+:class => "upvote-button", 
+:id => "upvote-comment-button-#{comment_id}" ,
+:remote => :true %>
+
+<% if has_liked_comment(current_user, comment) %>
+  <script>
+    $("#upvote-comment-icon-<%= comment_id %>")[0].classList.add("upvoted");
+  </script>
+<% end %>
