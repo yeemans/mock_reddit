@@ -27,8 +27,7 @@ class CommentsController < ApplicationController
   end
 
   def create 
-    @comment = Comment.create(comment_params)
-    @comment.parent_id = params[:parent_id] if params[:parent_id]
+    @comment = Comment.new(comment_params)
     @comment.save!
     redirect_to post_path(@comment.post_id)
   end
@@ -41,7 +40,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params 
-    params.require(:comment).permit(:user_id, :post_id, :body)
+    params.require(:comment).permit(:user_id, :post_id, :body, :parent_id)
   end
 
   def liking_params 

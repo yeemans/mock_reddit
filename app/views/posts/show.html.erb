@@ -21,7 +21,7 @@
 
 
     <% @comments.each do |comment| %>
-      <%= render :partial => 'comment', :locals => {:comment_id => comment.id} %>
+      <%= render :partial => 'comment', :locals => {:post_id => @post.id, :comment_id => comment.id} %>
     <% end %>
 
   <%= render :partial => "post_comment", :locals => {:post_id => @post.id} %>
