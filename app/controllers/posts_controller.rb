@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
     @moderators = @subreddit.moderators
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.where(parent_id: nil)
   end
   
   def upvote
@@ -60,5 +60,8 @@ class PostsController < ApplicationController
     params.permit(:id)
     params.require(:liking).permit(:user_id, :post_id, :is_upvote)
   end
+
+  private
+
 
 end

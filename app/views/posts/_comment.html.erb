@@ -7,7 +7,8 @@
 <div class="comment">
   <%= render :partial => "layouts/comment_vote_buttons", :locals => {:comment_id => comment_id} %>
   <%= image_tag avatar, :class => "comment_listing_pfp" %>
-  <%= link_to "#{@user.username}", profile_path(@user.username), :class => "black" %>
+  <%= link_to "#{@user.username}", profile_path(@user.username), :class => "black", :name => @user.username, 
+  :id => "comment-#{comment_id}" %>
 
   <br />
   <p> <%= @comment.body %> </p>

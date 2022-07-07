@@ -33,9 +33,10 @@ class CommentsController < ApplicationController
   end
 
   def reply 
+    @test = "test"
     respond_to do |format| 
       format.html { redirect_back fallback_location: root_path }
-      format.js {  }    
+      format.js { }    
     end
   end
 

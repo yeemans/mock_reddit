@@ -1,3 +1,5 @@
-//<script>
-alert("test")
+//<script> //used for syntax highlighting in vscode
+
 $("#form_div").html("<%=j render :partial => 'posts/post_comment' %>")
+$("#comment-<%= params[:parent_id] %>")[0].name
+$("#comment_body")[0].placeholder = `Replying to u/${$("#comment-<%= params[:parent_id] %>")[0].name}...`
