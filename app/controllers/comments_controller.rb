@@ -33,10 +33,22 @@ class CommentsController < ApplicationController
   end
 
   def reply 
-    @test = "test"
     respond_to do |format| 
       format.html { redirect_back fallback_location: root_path }
       format.js { }    
+    end
+  end
+
+  def show_replies 
+    @children_ids = []
+    @comment = Comment.find(params[:comment_id])
+    @post_id = @comment.post_id
+
+    @comment.children.each { |reply| @children_ids.append(reply.id) }
+
+    respond_to do |format| 
+      format.html { redirect_back fallback_location: root_path }
+      format.js {  }  
     end
   end
 

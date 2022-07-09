@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   post '/posts/:id/upvote', to: 'posts#upvote', :as => :upvote_post_test
   get '/comments/:id/upvote', to: 'comments#upvote', :as => :upvote_comment
   get '/comment/:id/:comment_id/reply', to: 'comments#reply', :as => :reply_to_comment
+  get '/comment/:comment_id/show_replies', to: 'comments#show_replies', :as => :show_replies
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
