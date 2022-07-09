@@ -13,12 +13,27 @@
   <br />
   <p> <%= @comment.body %> </p>
   <%= link_to "Reply", reply_to_comment_path(post_id, comment_id), :class => "reply-button", :format => :js,
-      :id => comment_id, :onclick => "create_reply_box" %>
+      :id => comment_id %>
 
   <% if @comment.children.count > 0 %>
     <%= link_to "Show Replies", show_replies_path(comment_id), :class => "show-replies-button", :format => :js,
-        :id => "show-replies-#{comment_id}", :onclick => "send_show_replies_request" %>
+        :id => "show-replies-#{comment_id}", :data => {:is_reply => true} %>
+
     <div id=<%= "reply-box-#{comment_id}" %> > </div>
   <% end %>
 
 </div>
+
+<% if @is_reply %> 
+  <script>
+    for (let i = 0; i < $(".comment").length; i++) { 
+      $(".comment")[i].style.marginLeft = "10%";
+    }
+  </script>
+<% end %>
+
+
+
+<%= javascript_pack_tag "update_upvotes.js" %>
+<%= javascript_pack_tag "reply_button.js" %>
+<%= javascript_pack_tag "show_replies_button.js" %>

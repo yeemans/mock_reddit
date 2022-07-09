@@ -3,7 +3,7 @@ console.log(" <%= @children_ids %>")
 <%= @children_ids.each do |reply_id| %>
   console.log("<%= reply_id %>")
   $("#reply-box-<%= params[:comment_id] %>").html("<%=j render :partial => 'posts/comment', 
-        :locals => {:comment_id => reply_id, :post_id => @post_id} %>")
+        :locals => {:comment_id => reply_id, :post_id => @post_id, :@is_reply => true} %>")
    
 <% end %>
 
