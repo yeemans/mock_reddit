@@ -2,7 +2,7 @@
 <%= render "update_banner" if @is_profile_owner %>
 
 <div class="columns profile-container">
-  <div>
+  <div id="profile-div">
     <%= image_tag @avatar, { :id => "profile_pic" } %> 
     <%= render "update_profile_picture" if @is_profile_owner %>
     <%= link_to "Chat", "#{chat_path}?sender=#{current_user.id}&receiver=#{@profile_owner.id}" %>
@@ -31,6 +31,10 @@
 
   </div>
 </div>
+
+<% @profile_owner.posts.each do |post| %>
+  <%= render :partial => "layouts/profile_posts", :locals => {:post_id => post.id} %>
+<% end %>
 
 <%= javascript_pack_tag 'profile', 'data-turbolinks-track' => false %>
 

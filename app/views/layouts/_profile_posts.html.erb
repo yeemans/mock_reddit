@@ -1,0 +1,19 @@
+<% @post = Post.find(post_id) %>
+<div class="columns is-multiline" id="subreddit-body">
+  <div class="column is-three-fifths is-multiline">
+
+    <div class="columns">
+
+      <div class="post-header column is-3">
+        <%= link_to "Posted by u/#{@post.user.username}", profile_path(@post.user.username),
+        :class => "post-username" %>
+        <%= link_to @post.title, post_path(post_id) %> 
+      </div>
+    </div>
+
+    <div class="post-body" style="overflow: scroll;">
+      <%= @post.content %> 
+    </div>
+
+  </div>
+</div>
