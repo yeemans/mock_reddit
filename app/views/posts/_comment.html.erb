@@ -4,7 +4,7 @@
 <% avatar = 'default.png' %>
 <% avatar = url_for(@user.avatar) if @user.avatar.persisted? %>
 
-<div class="comment">
+<div class="comment" id=<%="comment-#{comment_id}-box"%> >
   <%= render :partial => "layouts/comment_vote_buttons", :locals => {:comment_id => comment_id} %>
   <%= image_tag avatar, :class => "comment_listing_pfp" %>
   <%= link_to "#{@user.username}", profile_path(@user.username), :class => "black", :name => @user.username, 
@@ -27,7 +27,7 @@
 </div>
 
 <% if @is_reply %> 
-  <%= javascript_pack_tag "comment_indentation.js" %>
+  <%= render :partial => "comment_indentation_script", :locals => {:comment_id => comment_id}  %>
 <% end %>
 
 

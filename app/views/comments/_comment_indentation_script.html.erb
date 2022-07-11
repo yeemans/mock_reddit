@@ -1,0 +1,16 @@
+<script>
+    function last(array) { 
+    return array[array.length - 1];
+    }
+
+
+    for (let i = 0; i < $(".comment").length; i++) { 
+
+        last($("#comment-<%= comment_id %>-box")).style.marginLeft = "5%";
+
+        // offset the margin if comments are too indented
+        if (last($("#comment-<%= comment_id %>-box")).offsetWidth < window.innerWidth * 0.5) {  
+            last($("#comment-<%= comment_id %>-box")).style.marginLeft = "0%";
+        }
+    }
+</script>
