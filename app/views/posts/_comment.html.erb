@@ -10,8 +10,10 @@
   <%= link_to "#{@user.username}", profile_path(@user.username), :class => "black", :name => @user.username, 
   :id => "comment-#{comment_id}" %>
 
-  <br />
-  <p> <%= @comment.body %> </p>
+  <div class="comment-body">
+    <p> <%= @comment.body %> </p>
+  </div>
+
   <%= link_to "Reply", reply_to_comment_path(post_id, comment_id), :class => "reply-button", :format => :js,
       :id => comment_id %>
 
@@ -25,11 +27,7 @@
 </div>
 
 <% if @is_reply %> 
-  <script>
-    for (let i = 0; i < $(".comment").length; i++) { 
-      $(".comment")[i].style.marginLeft = "10%";
-    }
-  </script>
+  <%= javascript_pack_tag "comment_indentation.js" %>
 <% end %>
 
 

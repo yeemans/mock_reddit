@@ -445,6 +445,11 @@ figure {
 
 .comment { 
   font-family: sans-serif; 
+  min-width: 20%;
+}
+
+.comment-body { 
+  word-wrap: break-word;
 }
 
 .conversation-container { 
