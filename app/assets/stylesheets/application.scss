@@ -450,6 +450,8 @@ figure {
 
 .comment-body { 
   word-wrap: break-word;
+  overflow: scroll; 
+  max-height: 20vh;
 }
 
 .conversation-container { 
