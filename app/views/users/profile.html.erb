@@ -2,12 +2,12 @@
 <%= render "update_banner" if @is_profile_owner %>
 
 <div class="columns profile-container">
+
   <div id="profile-div">
     <%= image_tag @avatar, { :id => "profile_pic" } %> 
     <%= render "update_profile_picture" if @is_profile_owner %>
-    <%= link_to "Chat", "#{chat_path}?sender=#{current_user.id}&receiver=#{@profile_owner.id}" %>
-    <%= button_to "Log out", destroy_user_session_path, :method => :delete if current_user == @profile_owner %>
-    <%= link_to "Follow", follow_path(current_user.id, @profile_owner.id) %>
+
+    <%= render :partial => "layouts/profile_buttons", :locals => {:user => @profile_owner.id} %>
   </div>
 
   <div class="column is-one-quarter">
@@ -38,6 +38,24 @@
 <% end %>
 
 <%= javascript_pack_tag 'profile', 'data-turbolinks-track' => false %>
+
+<script>
+
+  function send_follow_request() {   
+      $.ajax({
+          type: 'GET',
+          url: this.href,
+          dataType: 'script', 
+          data: { }
+      })
+      return false;
+  }
+
+  $("#follow-button")[0].onclick = send_follow_request;
+
+
+
+</script>
 
 
 

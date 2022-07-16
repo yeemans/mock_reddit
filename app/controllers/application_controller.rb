@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :has_disliked_post
   helper_method :get_opposite_liking
+  helper_method :already_followed?
 
   def signed_in_user
     return current_user 
@@ -128,6 +129,11 @@ class ApplicationController < ActionController::Base
     end 
 
     return CommentLiking.where(liking_params)
+  end
+
+  def already_followed?(follower_id, followed_user_id)
+    @follow = Follow.where(:follower_id => follower_id, :followed_user_id => followed_user_id)
+    return !@follow.empty?
   end
 
 end

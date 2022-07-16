@@ -1,0 +1,10 @@
+<%= link_to "Chat", "#{chat_path}?sender=#{current_user.id}&receiver=#{@profile_owner.id}" %>
+<%= button_to "Log out", destroy_user_session_path, :method => :delete if current_user == @profile_owner %>
+
+<% if !already_followed?(@current_user.id, @profile_owner.id) %>
+    <%= link_to "Follow", follow_path(current_user.id, @profile_owner.id), :id => "follow-button" %>
+<% end %>
+
+<% if already_followed?(@current_user.id, @profile_owner.id) %>
+    <%= link_to "Unfollow", follow_path(current_user.id, @profile_owner.id), :id => "follow-button" %>
+<% end %>
