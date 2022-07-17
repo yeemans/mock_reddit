@@ -1,7 +1,13 @@
 //<script> 
 
+function getFollowCount() { 
+    return +$("#follow-count")[0].innerHTML[0];
+}
+
 if ($("#follow-button")[0].innerHTML == "Follow") { 
+    $("#follow-count")[0].innerHTML = `${getFollowCount() + 1}` + " followers";
     $("#follow-button")[0].innerHTML = "Unfollow";
 } else { 
+    $("#follow-count")[0].innerHTML = `${getFollowCount() - 1}` + " followers";
     $("#follow-button")[0].innerHTML = "Follow";
 }

@@ -8,6 +8,7 @@
     <%= render "update_profile_picture" if @is_profile_owner %>
 
     <%= render :partial => "layouts/profile_buttons", :locals => {:user => @profile_owner.id} %>
+    <p id ="follow-count"><%= @profile_owner.followers.count %> followers</p>
   </div>
 
   <div class="column is-one-quarter">
