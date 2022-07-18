@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @subreddits = current_user.subreddits 
     @feed_posts = []
     @subreddits.each { |sub| @feed_posts += sub.posts.last(10) }
+    current_user.followings.each { |user| @feed_posts += user.posts.last(2) }
   end
 
   def profile 
