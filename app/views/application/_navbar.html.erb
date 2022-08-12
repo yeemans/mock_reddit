@@ -1,28 +1,50 @@
 <% @avatar = get_avatar(current_user) %>
 
-<nav class="topnav">
-
-  <div id="logo">
-    <%= link_to image_tag("reddit.png"),root_path, id: 'home' %>
-    <%= link_to '<h4 id="logo-text"> Breaddit </h4>'.html_safe, root_path %>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= link_to image_tag("reddit.png"), root_path, id: 'home' %>
   </div>
 
-  <div id="nav-links">
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
 
-    <%= form_with url: "/search", :id => 'search_form', data: { turbo: false } do |form| %>
-      <%= form.text_field :query, :id => "query" %>
-      <%= form.submit "Hidden", :style => "display: none" %>
-    <% end %>
 
-    <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, new_post_path, id: 'post' %>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Search
+        </a>
 
-    <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_subreddit_path %>
-    <%= link_to '<i class="fa fa-envelope"></i>'.html_safe, private_messages_path(current_user.username) %>
+        <div class="navbar-dropdown">
+          <%= form_with url: "/search", :id => 'search_form', :class => "navbar-item", data: { turbo: false } do |form| %>
+            <%= form.text_field :query, :id => "query" %>
+            <%= form.submit "Hidden", :style => "display: none" %>
+          <% end %>
+        </div>
 
-    <%= link_to image_tag(@avatar) + "<p style='display: inline;'>#{current_user.username}</p>".html_safe, 
-    profile_path(current_user.username), id: 'profile' %>
+      </div>
 
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          New
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to 'Post', new_post_path, :class => "navbar-item", id: 'post' %>
+          <%= link_to 'Subreddit', new_subreddit_path, :class => "navbar-item" %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-brand">
+        <%= link_to image_tag(@avatar), profile_path(current_user.username), id: 'profile' %>
+      </div>
+
+      <div class="navbar-item">
+        <%= link_to current_user.username, profile_path(current_user.username) %>
+      </div>
+
+    </div>
   </div>
-  
 </nav>
-

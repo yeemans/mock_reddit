@@ -36,17 +36,8 @@
    flex-wrap: wrap;
  }
 
-nav {
-    height: 15%;
-    width: 100%;
-    font-family: "Helvetica Neue", Lato;
-    background: #333333; 
-    margin-top: 0px;
-    text-align: center;
-}
 
 nav a { 
-  color: #EEEEEE;
   font-size: 1.25em;
 }
 
@@ -55,25 +46,25 @@ nav a {
 }
 
 #home img {
-  height: 48px; 
-  width: 48px;
+  width: 15vw; 
+  height: 15vh;
 }
 
 #profile img { 
-  height: 48px; 
-  width: 48px;
+  height: 8vh; 
+  width: 8vw;
   border-radius: 25%; 
-  display: inline;
   margin-right: 1%;
 }
 
 /* Style navigation menu links */
 .topnav a, #profile p {
-  color: white;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
+
+
 
 #logo { 
   float: left;
