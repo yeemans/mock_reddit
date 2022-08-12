@@ -53,17 +53,6 @@ ActiveRecord::Schema.define(version: 2022_07_12_011627) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string "data_file_name", null: false
-    t.string "data_content_type"
-    t.integer "data_file_size"
-    t.string "data_fingerprint"
-    t.string "type", limit: 30
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
-  end
-
   create_table "comment_likings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "comment_id"
@@ -83,16 +72,6 @@ ActiveRecord::Schema.define(version: 2022_07_12_011627) do
     t.integer "parent_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "conversations", force: :cascade do |t|
-    t.integer "recipient_id"
-    t.integer "sender_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
-    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
-    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "follows", force: :cascade do |t|

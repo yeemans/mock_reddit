@@ -7,5 +7,6 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") %> 
+  # change the redis url when pushing to prod. 
+
   channel_prefix: reddit_production

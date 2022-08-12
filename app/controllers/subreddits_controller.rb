@@ -31,12 +31,14 @@ class SubredditsController < ApplicationController
     @subreddit = Subreddit.find_by(title: params[:title])
     @subscription = Subscription.new({ :user => current_user, :subreddit => @subreddit })
     @subscription.save! unless current_user.subreddits.include?(@subreddit)
+    redirect_to r_path(params[:title])
   end 
 
   def unsubscribe 
     @subreddit = Subreddit.find_by(title: params[:title])
     return unless current_user.subreddits.include?(@subreddit)
     Subscription.where(user: current_user, subreddit: @subreddit.id).first.destroy
+    redirect_to r_path(params[:title])
   end
 
   def search 
