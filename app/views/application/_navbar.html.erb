@@ -1,50 +1,47 @@
+<%= stylesheet_link_tag "navbar" %>
 <% @avatar = get_avatar(current_user) %>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <%= link_to image_tag("reddit.png"), root_path, id: 'home' %>
-  </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Search
-        </a>
-
-        <div class="navbar-dropdown">
-          <%= form_with url: "/search", :id => 'search_form', :class => "navbar-item", data: { turbo: false } do |form| %>
+<header id="nav-wrapper" style="width: 90%;">
+  <nav id="nav">
+    <div class="nav left">
+      <span class="gradient skew"><h1 class="logo un-skew"><a href="#home">Logo Here</a></h1></span>
+      <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+    </div>
+    
+    <div class="nav right navbar-start">
+      <p class="nav-link active">
+        <span class="nav-link-span">
+          
+          <%= form_with url: "/search", :id => 'search_form', :class => "hidden navbar-item", data: { turbo: false } do |form| %>
             <%= form.text_field :query, :id => "query" %>
             <%= form.submit "Hidden", :style => "display: none" %>
           <% end %>
-        </div>
+          
+          <span id="test" class="u-nav"> Search </span>
+        </span>
+      </p>
+    
+      <a href=<%= new_post_path %> class="nav-link">
+        <span class="nav-link-span">
+          <span class="u-nav">Post</span>
+        </span>
+      </a>
 
-      </div>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          New
-        </a>
-
-        <div class="navbar-dropdown">
-          <%= link_to 'Post', new_post_path, :class => "navbar-item", id: 'post' %>
-          <%= link_to 'Subreddit', new_subreddit_path, :class => "navbar-item" %>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-brand">
+      <span>
         <%= link_to image_tag(@avatar), profile_path(current_user.username), id: 'profile' %>
-      </div>
-
-      <div class="navbar-item">
-        <%= link_to current_user.username, profile_path(current_user.username) %>
-      </div>
-
+      </span>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
+
+
+
+<script>
+  function test() { 
+    alert('test');
+    $("#search_form")[0].classList.toggle("hidden");
+  }
+  $("#test")[0].onclick = test;
+</script>
+<%= javascript_pack_tag "navbar" %>
