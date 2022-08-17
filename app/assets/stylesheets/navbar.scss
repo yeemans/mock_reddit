@@ -3,10 +3,11 @@ $color-secondary: #ff5858;
 $color-neutral-lt: #fff;
 $color-neutral-med: #ddd;
 $color-neutral-dk: #444;
-$a-tags: "a, a:active, a:hover, a:visited, p, p:active, p:visited";
-$a-tags-no-hov: "a:link, a:visited, a:active";
+$a-tags: "nav a, nav a:active, nav a:hover, nav a:visited, nav p, nav p:active, nav p:visited";
+$a-tags-no-hov: "nav a:link, nav a:visited, nav a:active";
 $headings-font: "Saira Semi Condensed", sans-serif;
 $shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+
 
 @mixin main-gradient {
   background: $color-primary;
@@ -29,7 +30,6 @@ $shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 
 /*-------------Reset-------------*/
 button {
-  background: none;
   box-shadow: none;
   border: none;
   cursor: pointer;
@@ -75,7 +75,6 @@ section {
   overflow: hidden;
   width: 100%;
   margin: 0 auto;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
@@ -224,4 +223,9 @@ a:hover {
   100% {
     padding-right: 5em;
   }
+}
+
+#logo_text { 
+  position: relative; 
+  
 }

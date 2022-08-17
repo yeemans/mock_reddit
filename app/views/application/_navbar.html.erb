@@ -1,26 +1,15 @@
-<%= stylesheet_link_tag "navbar" %>
 <% @avatar = get_avatar(current_user) %>
 
 
 <header id="nav-wrapper" style="width: 90%;">
   <nav id="nav">
     <div class="nav left">
-      <span class="gradient skew"><h1 class="logo un-skew"><a href="#home">Logo Here</a></h1></span>
+      <span class="gradient skew"><h1 class="logo un-skew"> <%= link_to "Breaddit", root_path, :id => :logo_text %> </h1></span>
       <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
     </div>
     
     <div class="nav right navbar-start">
-      <p class="nav-link active">
-        <span class="nav-link-span">
-          
-          <%= form_with url: "/search", :id => 'search_form', :class => "hidden navbar-item", data: { turbo: false } do |form| %>
-            <%= form.text_field :query, :id => "query" %>
-            <%= form.submit "Hidden", :style => "display: none" %>
-          <% end %>
-          
-          <span id="test" class="u-nav"> Search </span>
-        </span>
-      </p>
+
     
       <a href=<%= new_post_path %> class="nav-link">
         <span class="nav-link-span">
@@ -35,13 +24,9 @@
   </nav>
 </header>
 
+<script> 
 
-
-<script>
-  function test() { 
-    alert('test');
-    $("#search_form")[0].classList.toggle("hidden");
-  }
-  $("#test")[0].onclick = test;
+  
 </script>
 <%= javascript_pack_tag "navbar" %>
+<%= stylesheet_link_tag "navbar" %>

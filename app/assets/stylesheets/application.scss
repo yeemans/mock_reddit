@@ -41,8 +41,18 @@ nav a {
   font-size: 1.25em;
 }
 
-#profile, #search_form, .inline-text, #home { 
+#profile, .inline-text, #home { 
   display: inline;
+}
+
+
+
+#query { 
+  border-style: solid; 
+  border-color: black;
+  border-radius: 15px; 
+  border-width: 2px;
+  height: 1.5em;
 }
 
 #home img {
@@ -70,9 +80,8 @@ nav a {
   float: left;
 }
 
-#logo-text { 
+#logo_text { 
   color: white; 
-  font-family: Lato;
   display: inline;
 }
 

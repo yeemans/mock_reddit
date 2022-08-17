@@ -32,6 +32,10 @@ var util = {
     $("#menu").click(util.mobileMenu);
     $(window).resize(util.windowResize);
     $(document).scroll(util.scrollEvent);
-    
-  });
+
+    let text = document.querySelector("#logo_text");
+    let navbarHeight = document.querySelector("nav").clientHeight; 
+    let textHeight = text.offsetHeight;
+    text.style.top = (navbarHeight - textHeight) / 2 + "px";
+});
   
