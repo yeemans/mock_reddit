@@ -1,5 +1,7 @@
+<div style="text-align: center;">
+  <%= form_with url: "/search", :id => 'search_form', :placeholder => "Find Something!", data: { turbo: false } do |form| %>
+    <%= form.text_field :query, :id => "query" %>
+    <%= form.submit '🔍', :id => :search_button %>
 
-<%= form_with url: "/search", :id => 'search_form', :class => "navbar-item", data: { turbo: false } do |form| %>
-  <%= form.text_field :query, :id => "query" %>
-  <%= form.submit "Hidden", :style => "display: none" %>
-<% end %>
+  <% end %>
+</div>

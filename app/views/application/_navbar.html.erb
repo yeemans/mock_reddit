@@ -17,6 +17,12 @@
         </span>
       </a>
 
+      <a href=<%= private_messages_path(current_user.username) %> class="nav-link">
+        <span class="nav-link-span">
+          <span class="u-nav">Messages</span>
+        </span>
+      </a>
+
       <span>
         <%= link_to image_tag(@avatar), profile_path(current_user.username), id: 'profile' %>
       </span>

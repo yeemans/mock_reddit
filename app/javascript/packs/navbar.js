@@ -26,6 +26,13 @@ var util = {
     }
   };
   
+  function verticalCenterLogoText() { 
+    let text = document.querySelector("#logo_text");
+    let navbarHeight = document.querySelector("nav").clientHeight; 
+    let textHeight = text.offsetHeight;
+    text.style.top = (navbarHeight - textHeight) / 2 + "px";
+  }
+
   $(document).ready(function() {
     
     util.scrollMenuIds = $("a.nav-link[href]");
@@ -33,9 +40,7 @@ var util = {
     $(window).resize(util.windowResize);
     $(document).scroll(util.scrollEvent);
 
-    let text = document.querySelector("#logo_text");
-    let navbarHeight = document.querySelector("nav").clientHeight; 
-    let textHeight = text.offsetHeight;
-    text.style.top = (navbarHeight - textHeight) / 2 + "px";
+    verticalCenterLogoText();
+    $("#query")[0].placeholder = "    Find Something!";
 });
   
