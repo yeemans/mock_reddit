@@ -5,7 +5,10 @@
 </div>
 
 <div id="subreddit-list">
-
+  <% if @subreddits.empty? %>
+    <p> No subreddits with this title found. </p>
+  <% end %>
+  
   <% @subreddits.each do |subreddit| %>
     <%= render :partial => "subreddit_listing", :locals => {:subreddit_id => subreddit.id} %>
   <% end %>
@@ -13,6 +16,9 @@
 </div>
 
 <div id="post-list">
+  <% if @posts.empty? %>
+    <p> No posts for this topic found. </p>
+  <% end %>
 
   <% @posts.each do |post| %>
     <%= render :partial => "post_listing", :locals => {:post_id => post.id} %>
@@ -21,6 +27,9 @@
 </div>
 
 <div id="user-list">
+  <% if @users.empty? %>
+    <p> No users with this username found. </p>
+  <% end %>
 
   <% @users.each do |user| %>
     <%= render :partial => "user_listing", :locals => {:user_id => user.id} %>

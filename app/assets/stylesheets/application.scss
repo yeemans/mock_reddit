@@ -210,10 +210,9 @@ label input:valid + .label-text {
   transform: translateY(-74px);
 }
 
-button {
+button, .submit-button {
   background-color: #333333;
   border: 2px solid white;
-  border-radius: 27px;
   color: white;
   cursor: pointer;
   font-size: 20px;
@@ -504,4 +503,8 @@ a .fa-arrow-up, a .fa-arrow-down {
 
 #new_comment textarea{ 
   width: 100%;
+}
+
+.inline-button { 
+  display: inline;
 }

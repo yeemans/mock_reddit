@@ -6,8 +6,11 @@
   <%= form.text_field :title, :placeholder => "Title", :class => "full_width" %>
   <%= form.rich_text_area :content, size: '60x10' %>
 
-  <%= form.submit %>
+  <%= form.submit :class => "inline-button submit-button" %> 
+  <button class="inline-button"> <%= link_to "Create a Subreddit", new_subreddit_path, :class => "white-text" %> </button>
 <% end %>
+
+
 
 
 <script>
