@@ -1,4 +1,9 @@
+<% if @subreddits.empty? %>
+  <%= render partial: "recommendations" %>
+<% end %>
+
 <%= render partial: "subscribed_subreddits" %>
+
 
 <% @feed_posts.each do |post| %>
   <%= render partial: "feed_post_listing", locals: {post_id: post.id} %>

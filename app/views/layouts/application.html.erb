@@ -39,7 +39,7 @@
     </script>
     
     <%= render "navbar" if current_user %>
-    <%= render "search_form" %>
+    <%= render "search_form"  if current_user %>
     
     <%= yield %>
     

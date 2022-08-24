@@ -1,6 +1,30 @@
-<%= form_with model: @subreddit, data: { turbo: false } do |form| %>
-  <%= form.label :title, "Title: " %>
-  <%= form.text_field :title %>
-  <%= form.file_field :banner %>
-  <%= form.submit %>
-<% end %>
+<div id="create-subreddit">
+  <h2> Create a Community </h2>
+
+  <% if flash[:error] %>
+    <div class ="message is-danger">
+      <div class="message-header">
+        <p> <%= flash[:error] %> </p>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form_with model: @subreddit, data: { turbo: false } do |form| %>
+    <%= form.text_field :title, :id => "subreddit-title-input" %>
+
+    <div id="rules">
+      <ul>
+        <li>⚫ Subreddit name must be unique </li>
+        <li>⚫ Subreddit name cannot be blank </li>
+        <li>⚫ Names are case-sensitive </li>
+      </ul>
+    </div>
+
+    <%= form.submit :value => "Lets go!", :class => 'submit-button' %>
+  <% end %>
+
+</div>
+
+<script>
+  document.querySelector("#subreddit-title-input").placeholder = "r/your-title-here";
+</script>

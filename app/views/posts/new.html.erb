@@ -1,17 +1,16 @@
-<%= form_with model: @post do |form| %>
-  <div>
-    <%= form.label :subreddit, "Subreddit", :class => "label" %>
-    <%= form.collection_select(:subreddit, @subreddits, :id, :title) %>
-  </div>
-  <%= form.text_field :title, :placeholder => "Title", :class => "full_width" %>
-  <%= form.rich_text_area :content, size: '60x10' %>
+<div id="post-form">
+  <%= form_with model: @post do |form| %>
+    <div>
+      <%= form.label :subreddit, "Choose a Community" %>
+      <%= form.collection_select(:subreddit, @subreddits, :id, :title) %>
+    </div>
+    <%= form.text_field :title, :placeholder => "Title", :class => "full_width" %>
+    <%= form.rich_text_area :content, size: '60x10' %>
 
-  <%= form.submit :class => "inline-button submit-button" %> 
-  <button class="inline-button"> <%= link_to "Create a Subreddit", new_subreddit_path, :class => "white-text" %> </button>
-<% end %>
-
-
-
+    <%= form.submit :class => "inline-button submit-button" %> 
+    <button class="inline-button"> <%= link_to "Create a Subreddit", new_subreddit_path, :class => "white-text" %> </button>
+  <% end %>
+</div>
 
 <script>
     $(document).ready(function() {

@@ -4,6 +4,19 @@ class SubredditsController < ApplicationController
   end 
 
   def create 
+    # if sub exists 
+    if Subreddit.find_by(:title => params[:subreddit][:title]) 
+      flash[:error] = "A Subreddit already has this title."
+      redirect_to new_subreddit_path
+      return
+    end
+
+    if params[:subreddit][:title] == "" 
+      flash[:error] = "Title cannot be blank"
+      redirect_to new_subreddit_path
+      return
+    end
+
     @subreddit = Subreddit.create(subreddit_params)
     @moderation = SubredditModeration.create({:moderator_id => current_user.id, 
     :moderated_subreddit_id => @subreddit.id})

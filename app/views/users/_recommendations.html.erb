@@ -1,0 +1,19 @@
+<h3 id="join-a-community"> Join a Community to Get Started </h3>
+
+<% subreddits = []%>
+<% titles = ["funny", "news", "technology"] %>
+<% titles.each { |t| subreddits.push(Subreddit.find_by(:title => t)) } %>
+
+<div class="columns is-centered">
+
+  <% subreddits.each do |sub| %>
+    <% sub_path = r_path(sub.title) %>
+    <div class="column is-2 subreddit-card" data-banner= <%= get_banner(sub) %> data-sub_link= <%= sub_path %> >
+      <%= link_to sub.title, r_path(sub.title), :class => "white-text" %> 
+    </div>
+  <% end %>
+
+</div>
+
+<%= javascript_pack_tag "card_backgrounds.js" %>
+<%= javascript_pack_tag "recommendations.js" %>

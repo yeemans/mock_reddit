@@ -1,4 +1,5 @@
-<%= image_tag @banner, :id => "subreddit_banner" %>
+
+<%= link_to (image_tag @banner, :id => "subreddit_banner"), r_path(@subreddit.title) %>
 
 <div class="columns is-multiline" id="subreddit-body">
   <div class="column is-three-fifths is-multiline">
@@ -30,7 +31,7 @@
   <div class="column is-one-quarter">
 
     <div id="description-header">
-      <h3 id="about-community"> About Community </h3>
+      <h3 id="about-community"> About </h3>
     </div>
 
     <div class="description-body">
