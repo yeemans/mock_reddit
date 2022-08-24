@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get '/comment/:id/:comment_id/reply', to: 'comments#reply', :as => :reply_to_comment
   get '/comment/:comment_id/show_replies', to: 'comments#show_replies', :as => :show_replies
   get '/:follower_id/:followed_user_id/follow', to: 'follows#create', :as => :follow
+  get '/:post_id/delete', to: 'posts#delete', :as => :delete_post
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

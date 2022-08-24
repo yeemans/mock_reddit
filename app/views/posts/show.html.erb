@@ -25,7 +25,12 @@
       <%= render :partial => 'comment', :locals => {:post_id => @post.id, :comment_id => comment.id} %>
     <% end %>
 
-  <%= render :partial => "post_comment", :locals => {:post_id => @post.id} %>
+    <%= render :partial => "post_comment", :locals => {:post_id => @post.id} %>
+    
+    <% if @subreddit.moderators.include?(current_user) %>
+      <%= link_to "delete", delete_post_path(@post.id) %>
+      <%= delete_post_path(@post.id) %>
+    <% end %>
   </div>
 
   <div class="column is-one-quarter">

@@ -1,3 +1,11 @@
+<% if flash[:deleted] %>
+  <div class="message is-success">
+    <div class="message-header">
+      <p> Post deleted </p>
+    </div>
+  </div>
+<% end %>
+
 <%= image_tag @banner, :id => "subreddit_banner" %>
 <%= render "update_banner" if @subreddit.moderators.include?(current_user) %>
 

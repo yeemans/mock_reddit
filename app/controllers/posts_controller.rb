@@ -61,6 +61,18 @@ class PostsController < ApplicationController
     params.require(:liking).permit(:user_id, :post_id, :is_upvote)
   end
 
+  def delete 
+    @post = Post.find(params[:post_id])
+    @subreddit = Subreddit.find(@post.subreddit_id)
+    @liking = Liking.find_by(:user_id => current_user.id, :post_id => params[:post_id])
+    @liking.delete if @liking
+    @post.delete 
+    # also delete the search doc
+    PgSearch::Document.find_by(:searchable_type => "Post", :searchable_id => params[:post_id]).delete 
+    flash[:deleted] = "Post deleted"
+    redirect_to r_path(@subreddit.title)
+  end
+
   private
 
 
