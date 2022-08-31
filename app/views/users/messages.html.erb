@@ -7,7 +7,7 @@
     :class => "black" %>
 
     <h5> 
-      <% continue if chat.messages.length <= 0 %>
+      <% break if chat.messages.length <= 0 %>
       <%= link_to chat.messages.last.content, 
       "#{chat_path}?sender=#{current_user.id}&receiver=#{@receivers[index].id}", 
       :class => "black" %> 
