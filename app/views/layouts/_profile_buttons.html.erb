@@ -1,13 +1,31 @@
+<style>
+    button, #logout {
+        padding: 10px 14px;
+        border: none;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        transition: all ease-in-out .5s;
+        background-color: #6dcffd;
+    }
+</style>
+
 <div id="profile-page">
-    <%= link_to "Chat", "#{chat_path}?sender=#{current_user.id}&receiver=#{@profile_owner.id}" %>
-    <%= link_to "Log out", destroy_user_session_path, :method => :delete if current_user == @profile_owner %>
+    <button>
+        <%= link_to "Chat", "#{chat_path}?sender=#{current_user.id}&receiver=#{@profile_owner.id}" %>
+    </button>
+    <%= button_to "Log out", destroy_user_session_path, 
+        :method => :delete, :id => "logout" if current_user == @profile_owner %>
 
     <% if !already_followed?(current_user.id, @profile_owner.id) %>
-        <%= link_to "Follow", follow_path(current_user.id, @profile_owner.id),
-         :id => "follow-button" %>
+        <button>
+            <%= link_to "Follow", follow_path(current_user.id, @profile_owner.id),
+                :id => "follow-button" %>
+        </button>
     <% end %>
 
     <% if already_followed?(current_user.id, @profile_owner.id) %>
-        <%= link_to "Unfollow", follow_path(current_user.id, @profile_owner.id), :id => "follow-button" %>
+        <button>
+            <%= link_to "Unfollow", follow_path(current_user.id, @profile_owner.id), :id => "follow-button" %>
+        </button>
     <% end %>
 </div>

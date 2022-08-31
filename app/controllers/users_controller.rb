@@ -71,6 +71,8 @@ class UsersController < ApplicationController
     @rooms_with_user = []
 
     @rooms.each do |r| 
+      # if the participant doesnt exist
+      break if r.participants.length <= 0
       @participants = [User.find( r.participants[0].user_id ), User.find( r.participants[1].user_id ) ]
       @rooms_with_user.append(r) if @participants.include?(user)
     end
