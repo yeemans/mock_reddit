@@ -29,7 +29,6 @@
     
     <% if @subreddit.moderators.include?(current_user) %>
       <%= link_to "delete", delete_post_path(@post.id) %>
-      <%= delete_post_path(@post.id) %>
     <% end %>
   </div>
 
