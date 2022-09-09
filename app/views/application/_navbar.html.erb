@@ -1,32 +1,31 @@
-<% @avatar = get_avatar(current_user) %>
-
-
 <header id="nav-wrapper" style="width: 90%;">
   <nav id="nav">
     <div class="nav left">
       <span class="gradient skew"><h1 class="logo un-skew"> <%= link_to "Breaddit", root_path, :id => :logo_text %> </h1></span>
       <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
     </div>
-    
-    <div class="nav right navbar-start">
+    <% if current_user %>
+      <div class="nav right navbar-start">
+        <% @avatar = get_avatar(current_user) %>
+        
+          <a href=<%= new_post_path %> class="nav-link">
+            <span class="nav-link-span">
+              <span class="u-nav">Post</span>
+            </span>
+          </a>
 
-    
-      <a href=<%= new_post_path %> class="nav-link">
-        <span class="nav-link-span">
-          <span class="u-nav">Post</span>
-        </span>
-      </a>
+          <a href=<%= private_messages_path(current_user.username) %> class="nav-link">
+            <span class="nav-link-span">
+              <span class="u-nav">Messages</span>
+            </span>
+          </a>
 
-      <a href=<%= private_messages_path(current_user.username) %> class="nav-link">
-        <span class="nav-link-span">
-          <span class="u-nav">Messages</span>
-        </span>
-      </a>
-
-      <span>
-        <%= link_to image_tag(@avatar), profile_path(current_user.username), id: 'profile' %>
-      </span>
-    </div>
+          <span>
+            <%= link_to image_tag(@avatar), profile_path(current_user.username), id: 'profile' %>
+          </span>
+        
+      </div>
+    <% end %>
   </nav>
 </header>
 
