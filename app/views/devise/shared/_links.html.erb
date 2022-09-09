@@ -3,9 +3,9 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= button_to new_registration_path(resource_name), :method => :get do %>
-    "Don't have an account?"
-  <% end %> 
+  <button>
+    <%= link_to "Don't have an account?", new_registration_path(resource_name), :id => "no-account" %>
+  </button>
 <% end %>
 
 <% google = "<i class='fa fa-google'></i>" %>

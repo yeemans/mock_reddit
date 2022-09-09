@@ -53,7 +53,8 @@ class User < ApplicationRecord
 
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
-      user = User.create(username: data['name'],
+      @username = self.find_valid_username(data['name'])
+      user = User.create(username: @username,
         email: data['email'],
         password: Devise.friendly_token[0,20], 
         omniauth_pfp: data['image']
@@ -65,6 +66,17 @@ class User < ApplicationRecord
 
   def self.followed_accounts 
     return Following.where(:follower_id => self.id)
+  end
+
+  def self.find_valid_username(username)
+    # change the username depending on how many people already have it 
+    postfix = User.where(:username => username).length 
+    username += postfix.to_s if postfix > 0
+    while User.find_by(:username => username) 
+      postfix += 1 
+      username += postfix.to_s    
+    end
+    return username
   end
   
 end
