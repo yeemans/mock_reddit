@@ -1,16 +1,10 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
-<% end %>
+<div style ="margin-top: 2%;">
+  <% google = "<i class='fa fa-google'></i>" %>
+  <%= button_to user_google_oauth2_omniauth_authorize_path, data: {turbo: "false"} do %>
+    <%= google.html_safe + " Login" %>
+  <% end %>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <button>
-    <%= link_to "Don't have an account?", new_registration_path(resource_name), :id => "no-account" %>
-  </button>
-<% end %>
-
-<% google = "<i class='fa fa-google'></i>" %>
-<%= button_to user_google_oauth2_omniauth_authorize_path, data: {turbo: "false"} do %>
-  <%= google.html_safe + " Login" %>
-<% end %>
-
-
+  <%= button_to new_registration_path(resource_name), :method => :get do %>
+    "Don't have an account?"
+  <% end %> 
+</div>

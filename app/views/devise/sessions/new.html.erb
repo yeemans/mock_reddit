@@ -2,7 +2,6 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
-
     <label>
       <%= f.email_field :email %>
       <div class="label-text">email</div>
@@ -19,9 +18,10 @@
     </label>
 
     <div class="actions">
-      <button>Login</button>
-      <%= render "devise/shared/links" %>
+      <button> Sign in </button>
     </div>
   <% end %>
 
+  <%= render "devise/shared/links" %>
 </div>
+
