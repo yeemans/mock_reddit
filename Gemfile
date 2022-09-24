@@ -14,7 +14,6 @@ gem 'pg'
 
 gem 'pg_search'
 gem 'aws-sdk-s3'
-
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
