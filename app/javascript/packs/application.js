@@ -17,6 +17,7 @@ import "channels"
 import "trix"
 import "@rails/actiontext"
 import "@hotwired/turbo-rails"
+import "./actiontext.scss"
 
 
 let query = document.getElementById("query"); 
