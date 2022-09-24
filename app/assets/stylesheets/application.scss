@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ @import "trix/dist/trix";
+ @import "./actiontext.scss";
  @import url("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css");
 
  body { 
