@@ -65,7 +65,7 @@ class SubredditsController < ApplicationController
     @posts = PostsHelper.objects_from_results(@post_results)
     @users = PostsHelper.objects_from_results(@user_results)
 
-    ActiveStorage::Current.host = "https://mock-reddit-on-rails.herokuapp.com"  # change for testing and prod
+    ActiveStorage::Current.host = "https://https://mockreddit-production.up.railway.app"  # change for testing and prod
   end
 
   def update 
