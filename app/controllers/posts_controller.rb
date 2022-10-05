@@ -64,8 +64,12 @@ class PostsController < ApplicationController
   def delete 
     @post = Post.find(params[:post_id])
     @subreddit = Subreddit.find(@post.subreddit_id)
-    @liking = Liking.find_by(:user_id => current_user.id, :post_id => params[:post_id])
-    @liking.delete if @liking
+
+    @liking = Liking.where(:post_id => params[:post_id])
+    @liking.each do |liking| 
+      liking.delete
+    end
+
     @post.delete 
     # also delete the search doc
     PgSearch::Document.find_by(:searchable_type => "Post", :searchable_id => params[:post_id]).delete 
