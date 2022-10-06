@@ -4,11 +4,12 @@
 
 <%= render partial: "subscribed_subreddits" %>
 
-
+<br />
 <% @feed_posts.each do |post| %>
   <%= render partial: "feed_post_listing", locals: {post_id: post.id} %>
 <% end %>
 
+<br />
 <%= javascript_pack_tag "update_upvotes.js" %>
 
 

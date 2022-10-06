@@ -1,6 +1,6 @@
 <% subreddits = current_user.subreddits.last(4) %> 
 
-<div class="columns is-centered">
+<div class="columns is-centered is-multiline">
 
   <% subreddits.each do |sub| %>
     <% sub_path = r_path(sub.title) %>
