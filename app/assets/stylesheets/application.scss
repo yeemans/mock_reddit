@@ -477,11 +477,11 @@ figure {
 .subreddit-card { 
   border-style: solid; 
   border-width: 0px;
-  box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0, .5); 
+  box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0, .2); 
 }
 
 .subreddit-card background { 
-  filter: brightness(50%);
+  filter: brightness(80%);
 }
 
 .upvote-column { 
